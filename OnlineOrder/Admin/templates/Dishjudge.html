@@ -1,0 +1,142 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../../CommonHelp/UIHELP/js/conmonjs.js"></script>
+</head>
+<body>
+    
+    <form id="pagerForm" onsubmit="return navtabsearch(this);" action="../UI/Dishjudge.ashx" method="post">
+        <input type="hidden" name="pageNum" value="1" />
+        <input type="hidden" name="numPerPage" value="$data.pageSize" />
+    </form>
+
+    <div class="pageHeader">
+
+        <form onsubmit="return navTabSearch(this);" action="../UI/Dishjudge.ashx" method="post">
+            <input type="hidden" name="Search" value="test" />
+           
+             <div class="searchBar">
+                <table class="searchContent">
+                    <tbody>
+                        <tr>
+                            <td>
+                                评论菜肴：
+                            </td>
+                            <td><input type="text" name="itemsName" class="textInput" value="$!data.Search.itemsName"></td>
+                            <td>评论用户：</td>
+                            <td><input type="text" name="userName" class="textInput" value="$!data.Search.userName"></td>
+                            <td>评论内容：</td>
+                            <td><input type="text" name="commment" class="textInput" value="$!data.Search.commment"></td>
+                            <td>用户ip：</td>
+                            <td><input type="text" name="userIp" class="textInput" value="$!data.Search.userIp"></td>
+                        </tr>
+                        <tr>
+                            <td>评论日期：</td>
+                            <td>
+
+                                <input type="text" name="date" value="$!data.Search.date" class="date textInput readonly" readonly="true">
+                                <a class="inputDateButton" href="javascript:;">选择</a>
+                            </td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td>
+                                <div class="subBar">
+                                    <ul>
+                                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit" name="Search">检索</button></div></div></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+               
+            </div>
+        </form>
+    </div>
+    <div class="pageContent j-resizeGrid">
+        <div class="panelBar">
+            <ul class="toolBar">
+                <li><a class="add" href="../UI/Edit/DishjudgeEdit.ashx?Action=AddNew" target="dialog" width="800" height="540"><span>添加</span></a></li>
+                <li class="line">line</li>
+                <li class=""><a id="post" posttype="string" href="../../CommonHelp/operatorSQL/deleteMany.ashx?TabName=T_ItemMsg" target="selectedTodo" rel="delId" class="delete"><span>批量删除</span></a></li>
+                <li class="line">line</li>
+                <li><a class="icon" href="../../CommonHelp/DataConver/DataTableToExcel.ashx?TabName=T_ItemMsg" target="dwzExport" target="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+            </ul>
+        </div>
+        <div class="grid">
+            <div class="gridHeader">
+                <div class="gridThead">
+                    <table style="width:1129px;">
+                        <thead>
+                            <tr style=" text-align:center">
+                                <th class="center" style="width: 18px;"><div><input id="Totalselect" group="delId" onclick="CheckDelete()" type="checkbox"></div></th>
+                                <th class="center" style="width: 120px;"><div class="gridCol" title="序号">序号</div></th>
+                                <th class="center" style="width: 71px;"><div class="gridCol" title="评论菜肴">评论菜肴</div></th>
+                                <th class="center" style="width: 89px; cursor: default;" class=""><div class="gridCol" title="评论用户">评论用户</div></th>
+                                <th class="center" style="width: 404px; cursor: default;" class=""><div class="gridCol" title="评论内容">评论内容</div></th>
+                                <th class="center" style="width: 100px; "><div class="gridCol" title="评论IP">评论IP</div></th>
+                                <th class="center" style="width: 200px;"><div class="gridCol" title="评论日期">评论日期</div></th>
+                                <th class="center" style="width:20px"><div class="gridCol" title="删除">删除</div></th>
+                                <th class="center" style="width:20px"><div class="gridCol" title="编辑">编辑</div></th>
+                              </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="gridScroller" layouth="138" style="width: 1149px; height: 50px; overflow: auto;">
+                <div class="gridTbody">
+                    <table style="width:1129px;">
+                        <tbody>
+                            #foreach($item in $data.Dt)
+                            <tr target="sid_user" rel="1" class="">
+                                <td class="center" style="width: 18px;"><div><input name="delId" type="checkbox" value="$item.id"></div></td>
+                                <td class="center" style="width: 120px">$item.id</td>
+                                <td class="center" style="width: 71px;">$item.itemsName</td>
+                                <td class=" center" style="width: 89px;">$item.userName</td>
+                                <td class=" center" style="width: 404px;">$item.commment</td>
+                                <td class=" center" style="width: 100px">$item.userIp</td>
+                                <td class=" center" style="width: 200px;">$item.date</td>
+                                <td style="width:20px">
+                                    <a title="删除" target="ajaxTodo" href="../UI/Edit/DishjudgeEdit.ashx?Action=Delete&id=$item.id" class="btnDel">删除</a>
+                                </td>
+                                <td style="width:20px">
+                                    <a title="编辑" target="dialog" width="800" height="540" href="../UI/Edit/DishjudgeEdit.ashx?Action=Edit&id=$item.id" class="btnEdit">编辑</a>
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="resizeMarker" style="height:300px; left:57px;display:none;"></div><div class="resizeProxy" style="height:300px; left:377px;display:none;"></div>
+        </div>
+        <div class="panelBar">
+            <div class="pages">
+                <span>显示</span>
+                <select class="combox" name="numPerPage" onchange="navTabPageBreak({ numPerPage: this.value })">
+                    #foreach($pg in $data.PageType)
+                    #if($pg.pageSizes == $data.pageSize)
+                    <option value="$pg.pageSizes" selected>$pg.pageSizes</option>
+                    #else
+                    <option value="$pg.pageSizes">$pg.pageSizes</option>
+                    #end
+                    #end
+                </select>
+
+                <span>条，共${data.Total}条</span>
+            </div>
+            <!--分页组件-->
+            <div class="pagination" targetType="navTab" totalCount="${data.Total}" numPerPage="${data.pageSize}" pageNumShown="10" currentPage="${data.Index}"></div>
+        </div>
+    </div>
+</body>
+</html>

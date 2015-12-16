@@ -1,0 +1,28 @@
+﻿<div class="pageContent">
+    <form method="post" action="../UI/Edit/NetLoginRecordEdit.ashx" class="pageForm required-validate" onsubmit="return validateCallback(this ,dialogAjaxDone)" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="$data.Action" />
+        <input type="hidden" name="id" value="$!data.Model.id" />
+        <input type="hidden" name="Save" value="save" />
+        <div class="pageFormContent nowrap" layouth="97">
+            <dl>
+                <dt>用户名：</dt>
+                <dd>
+                    <input type="text" name="userId" class="required" value="$!data.Model.userId" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>登录时间：</dt>
+                <dd>
+                    <input type="text" name="loginTime" value="$!data.Model.loginTime" class="date textInput readonly" readonly="true">
+                    <a class="inputDateButton" href="javascript:;">选择</a>
+                  </dd>
+            </dl>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+</div>

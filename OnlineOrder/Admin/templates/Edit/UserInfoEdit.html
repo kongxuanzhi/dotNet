@@ -1,0 +1,54 @@
+﻿<div class="pageContent">
+    <form method="post" action="../UI/Edit/UserInfoEdit.ashx" class="pageForm required-validate" onsubmit="return validateCallback(this ,dialogAjaxDone)" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="$data.Action" />
+        <input type="hidden" name="id" value="$!data.Model.id" />
+        <input type="hidden" name="Save" value="save" />
+        <div class="pageFormContent nowrap" layouth="97">
+            <dl>
+                <dt>用户名：</dt>
+                <dd>
+                    <input type="text" name="name" class="required" value="$!data.Model.name" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>用户密码：</dt>
+                <dd>
+                    <input type="text" name="pwd" class="required" value="$!data.Model.pwd" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>性别：</dt>
+                <dd>
+                    <select class="select" name="sex">
+                        #if($data.Model.sex == "男")
+                        <option value="男" selected>男</option>
+                        <option value="女">女</option>
+                        #else
+                        <option value="男" >男</option>
+                        <option value="女" selected>女</option>
+                        #end
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>电话：</dt>
+                <dd>
+                    <input type="tel" value="$!data.Model.tel" name="tel" class="required" size="30" />
+                </dd>
+
+            </dl>
+            <dl>
+                <dt>订餐次数：</dt>
+                <dd>
+                    <input type="number" value="$!data.Model.orderTimes" name="orderTimes" class="required" size="30" />
+                </dd>
+            </dl>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+</div>

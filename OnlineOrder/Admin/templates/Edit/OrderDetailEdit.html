@@ -1,0 +1,46 @@
+﻿<div class="pageContent">
+    <form method="post" action="../UI/Edit/OrderDetailEdit.ashx" class="pageForm required-validate" onsubmit="return validateCallback(this ,dialogAjaxDone)" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="$data.Action" />
+        <input type="hidden" name="id" value="$!data.Model.id" />
+        <input type="hidden" name="Save" value="save" />
+        <div class="pageFormContent nowrap" layouth="97">
+            <dl>
+                <dt>订单号：</dt>
+                <dd>
+                    <input type="text" name="orderNum" class="required" value="$!data.Model.orderNum" readonly="readonly" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>菜肴名称：</dt>
+                <dd>
+                    <select class="select" name="itemName" >
+                        #foreach($it in $data.Items)
+                        #if($it.itemsName == $data.Model.itemName)
+                        <option value="$it.itemsName" selected>$it.itemsName</option>
+                        #else
+                        <option value="$it.itemsName" >$it.itemsName</option>
+                        #end
+                        #end
+                    </select>
+                </dd>
+            </dl>
+            <dl>
+                <dt>份数：</dt>
+                <dd>
+                    <input type="number" name="itemNum" class="required" value="$!data.Model.itemNum" placeholder="1" readonly="readonly" />
+                </dd>
+            </dl>
+            <dl>
+                <dt>总价钱：(元)</dt>
+                <dd>
+                    <input type="text" name="totalPay" class="required" value="$!data.Model.totalPay" readonly="readonly" />
+                </dd>
+            </dl>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">关闭</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,110 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../../CommonHelp/UIHELP/js/conmonjs.js"></script>
+
+</head>
+<body>
+    <form id="pagerForm" onsubmit="return navtabsearch(this);" action="../UI/ItemtypeManage.ashx" method="post">
+        <input type="hidden" name="pageNum" value="1" />
+        <input type="hidden" name="numPerPage" value="$data.pageSize" />
+    </form>
+
+    <div class="pageHeader">
+        <form onsubmit="return navTabSearch(this);" action="../UI/ItemtypeManage.ashx" method="post">
+            <input type="hidden" name="Search" value="test" />
+            <div class="searchBar">
+                <table class="searchContent">
+                    <tbody>
+                        <tr>
+                            <td>
+                                菜肴名称：
+                            </td>
+                            <td><input type="text" name="typeName" class="textInput" value="$!data.Search.typeName"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="subBar">
+                    <ul>
+                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit" name="Search">检索</button></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="pageContent j-resizeGrid">
+        <div class="panelBar">
+            <ul class="toolBar">
+                <li><a class="add" href="../UI/Edit/ItemtypeEdit.ashx?Action=AddNew" target="dialog" width="430" height="260"><span>添加</span></a></li>
+                <li class="line">line</li>
+                <li class=""><a id="post" posttype="string" href="../../CommonHelp/operatorSQL/deleteMany.ashx?TabName=T_ItemType" target="selectedTodo" rel="delId" class="delete"><span>批量删除</span></a></li>
+                <li class="line">line</li>
+                <li><a class="icon" href="../../CommonHelp/DataConver/DataTableToExcel.ashx?TabName=T_ItemType" target="dwzExport" target="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+             </ul>
+        </div>
+        <div class="grid">
+            <div class="gridHeader">
+                <div class="gridThead">
+                    <table style="width:1129px;">
+                        <thead>
+                            <tr style=" text-align:center">
+                                <th style="width: 18px;"><div><input id="Totalselect" group="delId" onclick="CheckDelete()" type="checkbox"></div></th>
+                                <th class="center" style="width: 120px;"><div class="gridCol" title="序号">序号</div></th>
+                                <th class="center" style="width: 120px;"><div class="gridCol" title="菜肴类型">菜肴类型</div></th>
+                                <th class="center" style="width:20px"><div class="gridCol" title="删除">删除</div></th>
+                                <th class="center" style="width:20px"><div class="gridCol" title="编辑">编辑</div></th>
+
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="gridScroller" layouth="138" style="width: 1149px; height: 50px; overflow: auto;">
+                <div class="gridTbody">
+                    <table style="width:1129px;">
+                        <tbody>
+                            #foreach($item in $data.Dt)
+                            <tr target="sid_user" rel="1" class="">
+                                <td class="center" style="width: 18px;"><div><input name="delId" type="checkbox" value="$item.id"></div></td>
+                                <td class="center" style="width: 120px;"><div>$item.id</div></td>
+                                <td class="center" style="width: 120px;"><div>$item.typeName</div></td>
+                                <td class="center" style="width:20px">
+                                    <a title="删除" target="ajaxTodo" href="../UI/Edit/ItemtypeEdit.ashx?Action=Delete&id=$item.id" class="btnDel">删除</a>
+                                </td>
+                                <td class="center" style="width:20px">
+                                    <a title="编辑" target="dialog" width="430" height="260" href="../UI/Edit/ItemtypeEdit.ashx?Action=Edit&id=$item.id" class="btnEdit">编辑</a>
+                                </td>
+                            </tr>
+                            #end
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="resizeMarker" style="height:300px; left:57px;display:none;"></div><div class="resizeProxy" style="height:300px; left:377px;display:none;"></div>
+        </div>
+        <div class="panelBar">
+            <div class="pages">
+                <span>显示</span>
+                <select class="combox" name="numPerPage" onchange="navTabPageBreak({ numPerPage: this.value })">
+                    #foreach($pg in $data.PageType)
+                    #if($pg.pageSizes == $data.pageSize)
+                    <option value="$pg.pageSizes" selected>$pg.pageSizes</option>
+                    #else
+                    <option value="$pg.pageSizes">$pg.pageSizes</option>
+                    #end
+                    #end
+                </select>
+
+                <span>条，共${data.Total}条</span>
+            </div>
+            <!--分页组件-->
+            <div class="pagination" targettype="navTab" totalcount="${data.Total}" numperpage="${data.pageSize}" pagenumshown="10" currentpage="${data.Index}"></div>
+        </div>
+
+    </div>
+
+</body>
+</html>

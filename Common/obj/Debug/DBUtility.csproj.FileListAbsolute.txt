@@ -1,0 +1,9 @@
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\bin\Debug\Common.dll
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\bin\Debug\Common.pdb
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\obj\Debug\Common.dll
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\obj\Debug\Common.pdb
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\bin\Debug\Common.dll
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\bin\Debug\Common.pdb
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\obj\Debug\DBUtility.csprojResolveAssemblyReference.cache
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\obj\Debug\Common.dll
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Common\obj\Debug\Common.pdb

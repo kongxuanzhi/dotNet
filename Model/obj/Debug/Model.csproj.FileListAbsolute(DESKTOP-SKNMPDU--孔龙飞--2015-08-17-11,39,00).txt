@@ -1,0 +1,17 @@
+E:\编程\暑期@公司任务\孔龙飞后勤\Model\Model\bin\Debug\Model.dll
+E:\编程\暑期@公司任务\孔龙飞后勤\Model\Model\bin\Debug\Model.pdb
+E:\编程\暑期@公司任务\孔龙飞后勤\Model\Model\obj\Debug\Model.dll
+E:\编程\暑期@公司任务\孔龙飞后勤\Model\Model\obj\Debug\Model.pdb
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\bin\Debug\Model.dll
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\bin\Debug\Model.pdb
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\obj\Debug\Model.dll
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\obj\Debug\Model.pdb
+E:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+F:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\bin\Debug\Model.dll
+F:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\bin\Debug\Model.pdb
+F:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\obj\Debug\Model.dll
+F:\编程\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\obj\Debug\Model.pdb
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\bin\Debug\Model.dll
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\bin\Debug\Model.pdb
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\obj\Debug\Model.dll
+F:\program\暑期@公司任务\孔龙飞后勤\在线订餐系统\Model\obj\Debug\Model.pdb

@@ -1,0 +1,21 @@
+﻿<div class="pageContent">
+    <form method="post" action="../UI/Edit/ItemtypeEdit.ashx" class="pageForm required-validate" onsubmit="return validateCallback(this ,dialogAjaxDone)" enctype="multipart/form-data">
+        <input type="hidden" name="Action" value="$data.Action" />
+        <input type="hidden" name="id" value="$!data.Model.id" />
+        <input type="hidden" name="Save" value="save" />
+        <div class="pageFormContent nowrap" layouth="97">
+            <dl>
+                <dt>菜肴类型：</dt>
+                <dd>
+                    <input type="text" name="typeName" class="required" value="$!data.Model.typeName" />
+                </dd>
+            </dl>
+        </div>
+        <div class="formBar">
+            <ul>
+                <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+            </ul>
+        </div>
+    </form>
+</div>

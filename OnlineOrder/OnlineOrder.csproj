@@ -1,0 +1,874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FEB09F41-66DC-4EAC-A722-C6EF3115C7FB}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OnlineOrder</RootNamespace>
+    <AssemblyName>OnlineOrder</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NVelocity, Version=1.1.1.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\NVelocity.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Dwz\bin\dwz.min.js" />
+    <Content Include="Admin\Dwz\bin\ESC.wsf" />
+    <Content Include="Admin\Dwz\bin\gzip.exe" />
+    <Content Include="Admin\Dwz\chart\g.bar.js" />
+    <Content Include="Admin\Dwz\chart\g.dot.js" />
+    <Content Include="Admin\Dwz\chart\g.line.js" />
+    <Content Include="Admin\Dwz\chart\g.pie.js" />
+    <Content Include="Admin\Dwz\chart\g.raphael.js" />
+    <Content Include="Admin\Dwz\chart\raphael-min.js" />
+    <Content Include="Admin\Dwz\chart\raphael.js" />
+    <Content Include="Admin\Dwz\chart\test\barchart.html" />
+    <Content Include="Admin\Dwz\chart\test\hbarchart.html" />
+    <Content Include="Admin\Dwz\chart\test\linechart.html" />
+    <Content Include="Admin\Dwz\chart\test\linechart2.html" />
+    <Content Include="Admin\Dwz\chart\test\linechart3.html" />
+    <Content Include="Admin\Dwz\chart\test\piechart.html" />
+    <Content Include="Admin\Dwz\demo\combox\area_all.html" />
+    <Content Include="Admin\Dwz\demo\combox\area_bj.html" />
+    <Content Include="Admin\Dwz\demo\combox\area_sh.html" />
+    <Content Include="Admin\Dwz\demo\combox\city_all.html" />
+    <Content Include="Admin\Dwz\demo\combox\city_bj.html" />
+    <Content Include="Admin\Dwz\demo\combox\city_sh.html" />
+    <Content Include="Admin\Dwz\demo\common\ajaxDone.html" />
+    <Content Include="Admin\Dwz\demo\common\ajaxTimeout.html" />
+    <Content Include="Admin\Dwz\demo\database\db_attachmentBrightBack.html" />
+    <Content Include="Admin\Dwz\demo\database\db_attachmentLookup.html" />
+    <Content Include="Admin\Dwz\demo\database\db_lookupSuggest.html" />
+    <Content Include="Admin\Dwz\demo\database\db_select.html" />
+    <Content Include="Admin\Dwz\demo\database\db_widget.html" />
+    <Content Include="Admin\Dwz\demo\database\dwzOrgLookup.html" />
+    <Content Include="Admin\Dwz\demo\database\dwzOrgLookup2.html" />
+    <Content Include="Admin\Dwz\demo\database\treeBringBack.html" />
+    <Content Include="Admin\Dwz\demo\database\treeLookup.html" />
+    <Content Include="Admin\Dwz\demo\pagination\ajaxDone1.html" />
+    <Content Include="Admin\Dwz\demo\pagination\ajaxDone2.html" />
+    <Content Include="Admin\Dwz\demo\pagination\ajaxDone3.html" />
+    <Content Include="Admin\Dwz\demo\pagination\dialog1.html" />
+    <Content Include="Admin\Dwz\demo\pagination\dialog2.html" />
+    <Content Include="Admin\Dwz\demo\pagination\layout1.html" />
+    <Content Include="Admin\Dwz\demo\pagination\layout2.html" />
+    <Content Include="Admin\Dwz\demo\pagination\list1.html" />
+    <Content Include="Admin\Dwz\demo\pagination\list2.html" />
+    <Content Include="Admin\Dwz\demo\pagination\list3.html" />
+    <Content Include="Admin\Dwz\demo\sortDrag\1.html" />
+    <Content Include="Admin\Dwz\demo\sortDrag\2.html" />
+    <Content Include="Admin\Dwz\dwz.frag.xml" />
+    <Content Include="Admin\Dwz\index.html" />
+    <Content Include="Admin\Dwz\js\dwz.accordion.js" />
+    <Content Include="Admin\Dwz\js\dwz.ajax.js" />
+    <Content Include="Admin\Dwz\js\dwz.alertMsg.js" />
+    <Content Include="Admin\Dwz\js\dwz.barDrag.js" />
+    <Content Include="Admin\Dwz\js\dwz.checkbox.js" />
+    <Content Include="Admin\Dwz\js\dwz.combox.js" />
+    <Content Include="Admin\Dwz\js\dwz.contextmenu.js" />
+    <Content Include="Admin\Dwz\js\dwz.core.js" />
+    <Content Include="Admin\Dwz\js\dwz.cssTable.js" />
+    <Content Include="Admin\Dwz\js\dwz.database.js" />
+    <Content Include="Admin\Dwz\js\dwz.datepicker.js" />
+    <Content Include="Admin\Dwz\js\dwz.dialog.js" />
+    <Content Include="Admin\Dwz\js\dwz.dialogDrag.js" />
+    <Content Include="Admin\Dwz\js\dwz.drag.js" />
+    <Content Include="Admin\Dwz\js\dwz.effects.js" />
+    <Content Include="Admin\Dwz\js\dwz.history.js" />
+    <Content Include="Admin\Dwz\js\dwz.navTab.js" />
+    <Content Include="Admin\Dwz\js\dwz.pagination.js" />
+    <Content Include="Admin\Dwz\js\dwz.panel.js" />
+    <Content Include="Admin\Dwz\js\dwz.print.js" />
+    <Content Include="Admin\Dwz\js\dwz.regional.zh.js" />
+    <Content Include="Admin\Dwz\js\dwz.resize.js" />
+    <Content Include="Admin\Dwz\js\dwz.scrollCenter.js" />
+    <Content Include="Admin\Dwz\js\dwz.sortDrag.js" />
+    <Content Include="Admin\Dwz\js\dwz.stable.js" />
+    <Content Include="Admin\Dwz\js\dwz.switchEnv.js" />
+    <Content Include="Admin\Dwz\js\dwz.tab.js" />
+    <Content Include="Admin\Dwz\js\dwz.taskBar.js" />
+    <Content Include="Admin\Dwz\js\dwz.theme.js" />
+    <Content Include="Admin\Dwz\js\dwz.tree.js" />
+    <Content Include="Admin\Dwz\js\dwz.ui.js" />
+    <Content Include="Admin\Dwz\js\dwz.util.date.js" />
+    <Content Include="Admin\Dwz\js\dwz.util.number.js" />
+    <Content Include="Admin\Dwz\js\dwz.validate.method.js" />
+    <Content Include="Admin\Dwz\js\jquery-1.7.2.js" />
+    <Content Include="Admin\Dwz\js\jquery-1.7.2.min.js" />
+    <Content Include="Admin\Dwz\js\jquery.bgiframe.js" />
+    <Content Include="Admin\Dwz\js\jquery.cookie.js" />
+    <Content Include="Admin\Dwz\js\jquery.easing.1.3.js" />
+    <Content Include="Admin\Dwz\js\jquery.validate.js" />
+    <Content Include="Admin\Dwz\js\jquery.validate.min.js" />
+    <Content Include="Admin\Dwz\js\speedup.js" />
+    <Content Include="Admin\Dwz\themes\azure\images\accordion\accordion.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\account_info_bg.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\alert\alertpanel.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\alert\alertpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\button\button_s.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\button\imgX.gif" />
+    <Content Include="Admin\Dwz\themes\azure\images\button\imgX.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\dialog\dialogpanel.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\dialog\dialogpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\form\input_bg.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\form\input_bt.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\grid\grid.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\grid\resizeCol.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\grid\tableth.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\header_bg.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\icon.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\layout\taskbar.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\layout\taskbar_control.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\layout\taskbar_icon.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\layout\toggleSidebar.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\listLine.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\menu\menu.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\order_down.gif" />
+    <Content Include="Admin\Dwz\themes\azure\images\order_up.gif" />
+    <Content Include="Admin\Dwz\themes\azure\images\pageHeader_bg.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\panel\panel.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\panel\panel_icon.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\preview.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\progressBar\progressBar_l.gif" />
+    <Content Include="Admin\Dwz\themes\azure\images\progressBar\progressBar_m.gif" />
+    <Content Include="Admin\Dwz\themes\azure\images\progressBar\progressBar_s.gif" />
+    <Content Include="Admin\Dwz\themes\azure\images\search-bg.gif" />
+    <Content Include="Admin\Dwz\themes\azure\images\search-bt.gif" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_c_c.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_c_l.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_c_r.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_f_c.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_f_l.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_f_r.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_h_c.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_h_l.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\shadow_h_r.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\tabs\tabscontrol.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\tabs\tabspage.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\tabs\tabspage_icon.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\tabs\tabspanel.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\tree\check.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\tree\folder.png" />
+    <Content Include="Admin\Dwz\themes\azure\images\tree\tree.png" />
+    <Content Include="Admin\Dwz\themes\azure\style.css" />
+    <Content Include="Admin\Dwz\themes\css\core.css" />
+    <Content Include="Admin\Dwz\themes\css\ieHack.css" />
+    <Content Include="Admin\Dwz\themes\css\login.css" />
+    <Content Include="Admin\Dwz\themes\css\print.css" />
+    <Content Include="Admin\Dwz\themes\default\images\accordion\accordion.png" />
+    <Content Include="Admin\Dwz\themes\default\images\account_info_bg.png" />
+    <Content Include="Admin\Dwz\themes\default\images\alert\alertpanel.png" />
+    <Content Include="Admin\Dwz\themes\default\images\alert\alertpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\default\images\button\button_s.png" />
+    <Content Include="Admin\Dwz\themes\default\images\button\imgX.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\button\toleft.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\button\toleftone.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\button\toright.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\button\torightone.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\dialog\dialogpanel.png" />
+    <Content Include="Admin\Dwz\themes\default\images\dialog\dialogpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\default\images\form\input_bg.png" />
+    <Content Include="Admin\Dwz\themes\default\images\form\input_bt.png" />
+    <Content Include="Admin\Dwz\themes\default\images\grid\grid.png" />
+    <Content Include="Admin\Dwz\themes\default\images\grid\resizeCol.png" />
+    <Content Include="Admin\Dwz\themes\default\images\grid\tableth.png" />
+    <Content Include="Admin\Dwz\themes\default\images\header_bg.png" />
+    <Content Include="Admin\Dwz\themes\default\images\icon.png" />
+    <Content Include="Admin\Dwz\themes\default\images\layout\taskbar.png" />
+    <Content Include="Admin\Dwz\themes\default\images\layout\taskbar_control.png" />
+    <Content Include="Admin\Dwz\themes\default\images\layout\taskbar_icon.png" />
+    <Content Include="Admin\Dwz\themes\default\images\layout\toggleSidebar.png" />
+    <Content Include="Admin\Dwz\themes\default\images\listLine.png" />
+    <Content Include="Admin\Dwz\themes\default\images\login_banner.jpg" />
+    <Content Include="Admin\Dwz\themes\default\images\login_bg.png" />
+    <Content Include="Admin\Dwz\themes\default\images\login_content_bg.png" />
+    <Content Include="Admin\Dwz\themes\default\images\login_header_bg.png" />
+    <Content Include="Admin\Dwz\themes\default\images\login_list.png" />
+    <Content Include="Admin\Dwz\themes\default\images\login_logo.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\login_sub.png" />
+    <Content Include="Admin\Dwz\themes\default\images\login_title.png" />
+    <Content Include="Admin\Dwz\themes\default\images\logo.png" />
+    <Content Include="Admin\Dwz\themes\default\images\menu\menu.png" />
+    <Content Include="Admin\Dwz\themes\default\images\order_down.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\order_up.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\pageHeader_bg.png" />
+    <Content Include="Admin\Dwz\themes\default\images\panel\panel.png" />
+    <Content Include="Admin\Dwz\themes\default\images\panel\panel_icon.png" />
+    <Content Include="Admin\Dwz\themes\default\images\progressBar\progressBar_l.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\progressBar\progressBar_m.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\progressBar\progressBar_s.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\search-bg.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\search-bt.gif" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_c_c.png" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_c_l.png" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_c_r.png" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_f_c.png" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_f_l.png" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_f_r.png" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_h_c.png" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_h_l.png" />
+    <Content Include="Admin\Dwz\themes\default\images\shadow\shadow_h_r.png" />
+    <Content Include="Admin\Dwz\themes\default\images\tabs\tabscontrol.png" />
+    <Content Include="Admin\Dwz\themes\default\images\tabs\tabspage.png" />
+    <Content Include="Admin\Dwz\themes\default\images\tabs\tabspage_icon.png" />
+    <Content Include="Admin\Dwz\themes\default\images\tabs\tabspanel.png" />
+    <Content Include="Admin\Dwz\themes\default\images\themeButton.png" />
+    <Content Include="Admin\Dwz\themes\default\images\tree\check.png" />
+    <Content Include="Admin\Dwz\themes\default\images\tree\folder.png" />
+    <Content Include="Admin\Dwz\themes\default\images\tree\tree.png" />
+    <Content Include="Admin\Dwz\themes\default\style.css" />
+    <Content Include="Admin\Dwz\themes\green\images\accordion\accordion.png" />
+    <Content Include="Admin\Dwz\themes\green\images\account_info_bg.png" />
+    <Content Include="Admin\Dwz\themes\green\images\alert\alertpanel.png" />
+    <Content Include="Admin\Dwz\themes\green\images\alert\alertpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\green\images\button\button_s.png" />
+    <Content Include="Admin\Dwz\themes\green\images\button\imgX.gif" />
+    <Content Include="Admin\Dwz\themes\green\images\dialog\dialogpanel.png" />
+    <Content Include="Admin\Dwz\themes\green\images\dialog\dialogpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\green\images\form\input_bg.png" />
+    <Content Include="Admin\Dwz\themes\green\images\form\input_bt.png" />
+    <Content Include="Admin\Dwz\themes\green\images\grid\grid.png" />
+    <Content Include="Admin\Dwz\themes\green\images\grid\resizeCol.png" />
+    <Content Include="Admin\Dwz\themes\green\images\grid\tableth.png" />
+    <Content Include="Admin\Dwz\themes\green\images\header_bg.png" />
+    <Content Include="Admin\Dwz\themes\green\images\layout\toggleSidebar.png" />
+    <Content Include="Admin\Dwz\themes\green\images\listLine.png" />
+    <Content Include="Admin\Dwz\themes\green\images\logo.png" />
+    <Content Include="Admin\Dwz\themes\green\images\pageHeader_bg.png" />
+    <Content Include="Admin\Dwz\themes\green\images\panel\panel.png" />
+    <Content Include="Admin\Dwz\themes\green\images\panel\panel_icon.png" />
+    <Content Include="Admin\Dwz\themes\green\images\tabs\tabscontrol.png" />
+    <Content Include="Admin\Dwz\themes\green\images\tabs\tabspage.png" />
+    <Content Include="Admin\Dwz\themes\green\images\tabs\tabspage_icon.png" />
+    <Content Include="Admin\Dwz\themes\green\images\tabs\tabspanel.png" />
+    <Content Include="Admin\Dwz\themes\green\images\tree\tree.png" />
+    <Content Include="Admin\Dwz\themes\green\style.css" />
+    <Content Include="Admin\Dwz\themes\purple\images\accordion\accordion.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\account_info_bg.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\alert\alertpanel.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\alert\alertpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\button\button_s.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\button\imgX.gif" />
+    <Content Include="Admin\Dwz\themes\purple\images\dialog\dialogpanel.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\dialog\dialogpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\form\input_bg.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\form\input_bt.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\grid\grid.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\grid\resizeCol.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\grid\tableth.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\header_bg.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\layout\taskbar.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\layout\taskbar_control.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\layout\taskbar_icon.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\layout\toggleSidebar.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\login_bg.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\login_content_bg.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\login_header_bg.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\login_list.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\menu\menu.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\pageHeader_bg.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\panel\panel.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\panel\panel_icon.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\progressBar\progressBar_l.gif" />
+    <Content Include="Admin\Dwz\themes\purple\images\progressBar\progressBar_m.gif" />
+    <Content Include="Admin\Dwz\themes\purple\images\progressBar\progressBar_s.gif" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_c_c.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_c_l.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_c_r.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_f_c.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_f_l.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_f_r.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_h_c.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_h_l.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\shadow\shadow_h_r.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\tabs\tabscontrol.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\tabs\tabspage.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\tabs\tabspage_icon.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\tabs\tabspanel.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\tree\check.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\tree\folder.png" />
+    <Content Include="Admin\Dwz\themes\purple\images\tree\tree.png" />
+    <Content Include="Admin\Dwz\themes\purple\style.css" />
+    <Content Include="Admin\Dwz\themes\silver\images\accordion\accordion.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\account_info_bg.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\alert\alertpanel.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\alert\alertpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\button\button_s.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\button\imgX.gif" />
+    <Content Include="Admin\Dwz\themes\silver\images\dialog\dialogpanel.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\dialog\dialogpanel_icon.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\form\input_bg.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\form\input_bt.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\grid\grid.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\grid\resizeCol.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\grid\tableth.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\header_bg.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\layout\taskbar.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\layout\taskbar_control.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\layout\taskbar_icon.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\layout\toggleSidebar.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\listLine.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\menu\menu.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\pageHeader_bg.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\panel\panel.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\panel\panel_icon.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\progressBar\progressBar_l.gif" />
+    <Content Include="Admin\Dwz\themes\silver\images\progressBar\progressBar_m.gif" />
+    <Content Include="Admin\Dwz\themes\silver\images\progressBar\progressBar_s.gif" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_c_c.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_c_l.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_c_r.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_f_c.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_f_l.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_f_r.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_h_c.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_h_l.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\shadow\shadow_h_r.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\tabs\tabscontrol.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\tabs\tabspage.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\tabs\tabspage_icon.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\tabs\tabspanel.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\tree\check.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\tree\folder.png" />
+    <Content Include="Admin\Dwz\themes\silver\images\tree\tree.png" />
+    <Content Include="Admin\Dwz\themes\silver\style.css" />
+    <Content Include="Admin\Dwz\uploadify\Change Log.txt" />
+    <Content Include="Admin\Dwz\uploadify\css\uploadify.css" />
+    <Content Include="Admin\Dwz\uploadify\img\add.jpg" />
+    <Content Include="Admin\Dwz\uploadify\img\cancel.jpg" />
+    <Content Include="Admin\Dwz\uploadify\img\delete.jpg" />
+    <Content Include="Admin\Dwz\uploadify\img\upload.jpg" />
+    <Content Include="Admin\Dwz\uploadify\img\uploadify-cancel.png" />
+    <Content Include="Admin\Dwz\uploadify\scripts\jquery.uploadify.js" />
+    <Content Include="Admin\Dwz\uploadify\scripts\jquery.uploadify.min.js" />
+    <Content Include="Admin\Dwz\uploadify\scripts\uploadify.swf" />
+    <Content Include="Admin\Dwz\xheditor\xheditor-1.2.1.min.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\angry.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\awkward.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\bye.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\config.txt" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\crazy.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\cry.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\curse.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\cute.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\despise.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\doubt.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\envy.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\fastcry.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\knock.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\laugh.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\mad.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\ohmy.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\panic.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\proud.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\quiet.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\sad.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\shutup.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\shy.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\sleep.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\smile.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\struggle.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\titter.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\tongue.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\wail.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\default\wronged.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\alien.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\angel.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\angry.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\bandit.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\biglaugh.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\blink.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\blush.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\config.txt" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\cool.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\cry.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\depres.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\devil.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\glare.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\heart.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\joyful.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\kiss.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\laugh.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\magician.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\ninja.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\pinch.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\police.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\sad.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\sick.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\sideways.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\sleep.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\smile.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\surprised.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\tongue.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\unsure.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\w00t.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\whistling.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\wondering.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\ipb\wub.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\1.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\10.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\11.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\12.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\13.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\14.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\15.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\16.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\17.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\18.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\19.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\2.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\20.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\21.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\22.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\23.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\24.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\25.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\26.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\27.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\28.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\29.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\3.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\30.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\31.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\32.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\33.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\34.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\35.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\36.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\37.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\38.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\39.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\4.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\40.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\5.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\6.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\7.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\8.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\msn\9.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\angry.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\bad.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\blush.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\brokenheart.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\bye.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\coffee.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\config.txt" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\cool.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\cry.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\curse.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\cute.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\devil.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\envy.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\gift.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\good.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\kiss.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\laugh.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\love.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\music.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\question.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\rose.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\sad.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\shocked.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\shout.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\sick.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\sleepy.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\smile.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\soccer.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\sweat.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\tired.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\tongue.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\victory.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_emot\pidgin\wink.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_lang\en.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_lang\zh-cn.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_lang\zh-tw.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\html2markdown.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\htmldomparser.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\img\add.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\img\bg1.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\img\bg2.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\img\btnbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\img\btnbgr.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\img\clear.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\img\progressbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\img\start.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\multiupload.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\multiupload.html" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\multiupload.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\swfupload\swfupload.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\multiupload\swfupload\swfupload.swf" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\showdown.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_plugins\ubb.js" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\blank.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\iframe.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\anchor.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\close.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\flash.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\icons.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\loading.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\progress.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\progressbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-address.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-div.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-h1.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-h2.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-h3.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-h4.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-h5.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-h6.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-p.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\tag-pre.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\waiting.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\wmp.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\img\wordimg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\default\ui.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\iframe.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\anchor.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\close.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\flash.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\icons.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\loading.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\progress.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\progressbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-address.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-div.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-h1.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-h2.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-h3.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-h4.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-h5.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-h6.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-p.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\tag-pre.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\waiting.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\wmp.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\img\wordimg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\nostyle\ui.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\iframe.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\anchor.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\buttonbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\close.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\flash.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\icons.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\loading.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\progress.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\progressbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-address.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-div.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-h1.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-h2.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-h3.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-h4.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-h5.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-h6.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-p.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\tag-pre.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\waiting.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\wmp.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\img\wordimg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007blue\ui.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\iframe.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\anchor.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\buttonbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\close.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\flash.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\icons.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\loading.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\progress.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\progressbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-address.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-div.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-h1.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-h2.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-h3.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-h4.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-h5.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-h6.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-p.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\tag-pre.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\waiting.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\wmp.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\img\wordimg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\o2007silver\ui.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\iframe.css" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\anchor.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\buttonbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\close.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\flash.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\icons.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\loading.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\progress.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\progressbg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-address.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-div.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-h1.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-h2.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-h3.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-h4.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-h5.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-h6.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-p.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\tag-pre.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\titlebg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\waiting.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\wmp.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\img\wordimg.gif" />
+    <Content Include="Admin\Dwz\xheditor\xheditor_skin\vista\ui.css" />
+    <Content Include="Admin\Dwz\模板.html" />
+    <Content Include="Admin\Other\jsback\AddSuccess.html" />
+    <Content Include="Admin\Other\jsback\deleteFail.html" />
+    <Content Include="Admin\Other\jsback\DeleteSuccess.html" />
+    <Content Include="Admin\Other\jsback\procfailure.html" />
+    <Content Include="Admin\Other\jsback\procSuccess.html" />
+    <Content Include="Admin\Other\jsback\UpdateSuccess.html" />
+    <Content Include="Admin\templates\DishItemManage.html" />
+    <Content Include="Admin\templates\Dishjudge.html" />
+    <Content Include="Admin\templates\Edit\DishItemEdit.html" />
+    <Content Include="Admin\templates\Edit\DishjudgeEdit.html" />
+    <Content Include="Admin\templates\Edit\ItemtypeEdit.html" />
+    <Content Include="Admin\templates\Edit\NetLoginRecordEdit.html" />
+    <Content Include="Admin\templates\Edit\OrderDetailEdit.html" />
+    <Content Include="Admin\templates\Edit\OrderEdit.html" />
+    <Content Include="Admin\templates\Edit\UserInfoEdit.html" />
+    <Content Include="Admin\templates\ItemtypeManage.html" />
+    <Content Include="Admin\templates\NetLoginRecord.html" />
+    <Content Include="Admin\templates\OrderManage.html" />
+    <Content Include="Admin\templates\OrderDetailManage.html" />
+    <Content Include="Admin\templates\UserInfo.html" />
+    <Content Include="App_Data\DB_YYORDER.mdf" />
+    <Content Include="App_Data\DB_YYORDER_log.ldf">
+      <DependentUpon>DB_YYORDER.mdf</DependentUpon>
+    </Content>
+    <Content Include="CommonHelp\refrence\deletebyId.sql" />
+    <Content Include="CommonHelp\refrence\Maticsoft.Common.dll" />
+    <Content Include="CommonHelp\refrence\NVelocity.dll" />
+    <Content Include="CommonHelp\UIHELP\css\bootstrap.min.css" />
+    <Content Include="CommonHelp\UIHELP\js\bootstrap.min.js" />
+    <Content Include="CommonHelp\UIHELP\js\conmonjs.js" />
+    <Content Include="CommonHelp\UIHELP\js\jquery-1.8.0.min.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin\Other\PoceOrderMany.ashx.cs">
+      <DependentUpon>PoceOrderMany.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Other\Uploadimg.ashx.cs">
+      <DependentUpon>Uploadimg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\DishItemManage.ashx.cs">
+      <DependentUpon>DishItemManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Dishjudge.ashx.cs">
+      <DependentUpon>Dishjudge.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Edit\DishItemEdit.ashx.cs">
+      <DependentUpon>DishItemEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Edit\DishjudgeEdit.ashx.cs">
+      <DependentUpon>DishjudgeEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Edit\ItemtypeEdit.ashx.cs">
+      <DependentUpon>ItemtypeEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Edit\NetLoginRecordEdit.ashx.cs">
+      <DependentUpon>NetLoginRecordEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Edit\OrderDetailEdit.ashx.cs">
+      <DependentUpon>OrderDetailEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Edit\OrderEdit.ashx.cs">
+      <DependentUpon>OrderEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Edit\UserInfoEdit.ashx.cs">
+      <DependentUpon>UserInfoEdit.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Handler1.ashx.cs">
+      <DependentUpon>Handler1.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\Handler2.ashx.cs">
+      <DependentUpon>Handler2.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\ItemtypeManage.ashx.cs">
+      <DependentUpon>ItemtypeManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\NetLoginRecord.ashx.cs">
+      <DependentUpon>NetLoginRecord.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\OrderDetailManage.ashx.cs">
+      <DependentUpon>OrderDetailManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\OrderManage.ashx.cs">
+      <DependentUpon>OrderManage.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\UI\UserInfo.ashx.cs">
+      <DependentUpon>UserInfo.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonHelp\DataConver\CocuMD5.cs" />
+    <Compile Include="CommonHelp\DataConver\DataTableToExcel.ashx.cs">
+      <DependentUpon>DataTableToExcel.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonHelp\DataConver\dataTableToexcel.cs" />
+    <Compile Include="CommonHelp\DataConver\DtToJson.cs" />
+    <Compile Include="CommonHelp\DataConver\ProcRequest.cs" />
+    <Compile Include="CommonHelp\DataConver\Reflection.cs" />
+    <Compile Include="CommonHelp\DataConver\rendhtml.cs" />
+    <Compile Include="CommonHelp\DataConver\ResultProcess.cs" />
+    <Compile Include="CommonHelp\DataConver\SearchAndpage.cs" />
+    <Compile Include="CommonHelp\DbHelp\CommandInfo.cs" />
+    <Compile Include="CommonHelp\DbHelp\DbHelperSQL.cs" />
+    <Compile Include="CommonHelp\DbHelp\DbHelperSQLP.cs" />
+    <Compile Include="CommonHelp\DbHelp\DESEncrypt.cs" />
+    <Compile Include="CommonHelp\DbHelp\PubConstant.cs" />
+    <Compile Include="CommonHelp\DbHelp\SqlHelper.cs" />
+    <Compile Include="CommonHelp\IdentCode\SqlHelper.cs" />
+    <Compile Include="CommonHelp\IdentCode\ValidateCode.cs" />
+    <Compile Include="CommonHelp\operatorSQL\deleteMany.ashx.cs">
+      <DependentUpon>deleteMany.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="CommonHelp\operatorSQL\deleteById.cs" />
+    <Compile Include="CommonHelp\operatorSQL\selectById.cs" />
+    <Compile Include="CommonHelp\operatorSQL\selectFromTable.cs" />
+    <Compile Include="CommonHelp\operatorSQL\Update.cs" />
+    <Compile Include="CommonHelp\Paging\dividePage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Admin\Dwz\bin\gzjs.bat" />
+    <Content Include="Admin\Dwz\demo\common\ajaxDone.json" />
+    <Content Include="Admin\Dwz\demo\common\dwz-team.xls" />
+    <Content Include="Admin\Dwz\demo\database\.tmp_db_widget.html.19591~" />
+    <Content Include="Admin\Dwz\themes\azure\images\grid\Thumbs.db" />
+    <Content Include="Admin\Dwz\themes\azure\images\layout\Thumbs.db" />
+    <Content Include="Admin\Dwz\themes\azure\images\menu\Thumbs.db" />
+    <Content Include="Admin\Dwz\themes\azure\images\progressBar\Thumbs.db" />
+    <Content Include="Admin\Dwz\themes\azure\images\shadow\Thumbs.db" />
+    <Content Include="Admin\Dwz\themes\azure\images\tabs\Thumbs.db" />
+    <Content Include="Admin\Dwz\themes\azure\images\tree\Thumbs.db" />
+    <Content Include="Admin\Dwz\themes\default\images\panel\Thumbs.db" />
+    <Content Include="Admin\UI\DishItemManage.ashx" />
+    <Content Include="Admin\UI\ItemtypeManage.ashx" />
+    <Content Include="Admin\UI\NetLoginRecord.ashx" />
+    <Content Include="Admin\UI\UserInfo.ashx" />
+    <Content Include="Admin\UI\OrderDetailManage.ashx" />
+    <Content Include="Admin\UI\OrderManage.ashx" />
+    <Content Include="Admin\UI\Dishjudge.ashx" />
+    <Content Include="Admin\UI\Edit\DishItemEdit.ashx" />
+    <Content Include="Admin\UI\Edit\DishjudgeEdit.ashx" />
+    <Content Include="Admin\UI\Edit\ItemtypeEdit.ashx" />
+    <Content Include="Admin\UI\Edit\OrderDetailEdit.ashx" />
+    <Content Include="Admin\UI\Edit\OrderEdit.ashx" />
+    <Content Include="Admin\UI\Edit\UserInfoEdit.ashx" />
+    <Content Include="Admin\UI\Edit\NetLoginRecordEdit.ashx" />
+    <Content Include="Admin\Other\Uploadimg.ashx" />
+    <Content Include="CommonHelp\operatorSQL\deleteMany.ashx" />
+    <Content Include="CommonHelp\DataConver\DataTableToExcel.ashx" />
+    <Content Include="Admin\Other\PoceOrderMany.ashx" />
+    <Content Include="Admin\UI\Handler1.ashx" />
+    <Content Include="Admin\UI\Handler2.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Admin\UploadImage\菜肴图片\" />
+    <Folder Include="downloadFiles\" />
+    <Folder Include="templates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BLL\BLL.csproj">
+      <Project>{f828bac3-c9fc-4978-bfb9-650b1fdfb879}</Project>
+      <Name>BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{deeb99f9-df30-45f3-9670-d00993a3ad18}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>8766</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:8766/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

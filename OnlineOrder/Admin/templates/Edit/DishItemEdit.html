@@ -1,0 +1,60 @@
+﻿
+     
+
+   
+    <div class="pageContent">
+        <form method="post"   action="../UI/Edit/DishItemEdit.ashx" class="pageForm required-validate" onsubmit="return iframeCallback(this,dialogAjaxDone);">
+            <input type="hidden" name="Action" value="$data.Action" />
+            <input type="hidden" name="id" value="$!data.Model.id" />
+            <input type="hidden" name="Save" value="save" />
+            <div class="pageFormContent nowrap" layouth="97">
+                <dl>
+                    <dt>菜肴名称：</dt>
+                    <dd>
+                        <input type="text" name="itemsName" class="required" value="$!data.Model.itemsName" />
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>菜肴价格：</dt>
+                    <dd>
+                        <input type="number" name="price" class="required" value="$!data.Model.price" />
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>菜肴分类：</dt>
+                    <dd>
+                        <select name="type">
+                            #foreach($ty in $data.ItemsTypes)
+                            #if($ty.typeName == $data.Model.type)
+                            <option value="$ty.typeName" selected>$ty.typeName</option>
+                            #else
+                            <option value="$ty.typeName">$ty.typeName</option>
+                            #end
+                            #end
+                        </select>
+                    </dd>
+                </dl>
+                <dl>
+                    <dt>图片上传：</dt>
+                    <dd>
+                        <input type="file" value="$!data.Model.pic" id="pic" name="pic" class="required" size="30" />
+                        <iframe name="targetAvatar" style="display:none"></iframe>
+
+                    </dd>
+                </dl>
+                <dl class="nowrap">
+                    <dt>菜肴简介：</dt>
+                    <dd><textarea name="detail" class="required" cols="80" rows="10">$!data.Model.detail</textarea></dd>
+                </dl>
+
+            </div>
+            <div class="formBar">
+                <ul>
+                    <li><div class="buttonActive"><div class="buttonContent"><button type="submit">提交</button></div></div></li>
+                    <li><div class="button"><div class="buttonContent"><button type="button" class="close">取消</button></div></div></li>
+                </ul>
+            </div>
+        </form>
+    </div>
+   
+

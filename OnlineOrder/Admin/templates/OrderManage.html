@@ -1,0 +1,157 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="../../CommonHelp/UIHELP/js/conmonjs.js"></script>
+
+</head>
+<body>
+    <form id="pagerForm" onsubmit="return navtabsearch(this);" action="../UI/OrderManage.ashx" method="post">
+        <input type="hidden" name="pageNum" value="1" />
+        <input type="hidden" name="numPerPage" value="$data.pageSize" />
+    </form>
+
+    <div class="pageHeader">
+        <form onsubmit="return navTabSearch(this);" action="../UI/OrderManage.ashx" method="post">
+            <input type="hidden" name="Search" value="test" />
+            
+            <div class="searchBar">
+                <table class="searchContent">
+                    <tbody>
+                        <tr>
+                            <td>
+                                订单号：
+                            </td>
+                            <td><input type="text" name="orderNum" class="textInput" value="$!data.Search.orderNum"></td>
+                            <td>用户名：</td>
+                            <td><input type="text" name="userName" class="textInput" value="$!data.Search.userName"></td>
+                            <td>订餐时间：</td>
+                            <td>
+                                <input type="text" name="orderTime" value="$!data.Search.orderTime" class="date textInput readonly" readonly="true">
+                                <a class="inputDateButton" href="javascript:;">选择</a>
+                            </td>
+                            <td>备注：</td>
+                            <td><input type="text" name="mark" class="textInput" value="$!data.Search.mark"></td>
+                            <td> 状态：</td>
+                            <td>
+                                <select class="select" name="statu">
+                                    #if($data.Search.statu == "已处理")
+                                    <option value="待处理" >待处理</option>
+                                    <option value="已处理" selected >已处理</option>
+                                    #else
+                                    <option value="待处理" selected>待处理</option>
+                                    <option value="已处理" >已处理</option>
+                                    #end
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="subBar">
+                    <ul>
+                        <li><div class="buttonActive"><div class="buttonContent"><button type="submit" name="Search">检索</button></div></div></li>
+                    </ul>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="pageContent j-resizeGrid">
+        <div class="panelBar">
+            <ul class="toolBar">
+               <!-- <li><a class="add" href="../UI/Edit/OrderEdit.ashx?Action=AddNew" target="dialog" width="800" height="540"><span>添加</span></a></li>-->
+                <!--<li class="line">line</li>-->
+                 <li class=""><a class="edit" posttype="string" href="../Other/PoceOrderMany.ashx" target="selectedTodo" rel="delId"><span>批量处理</span></a></li>
+                <li class="line">line</li>
+                <li class=""><a id="post" posttype="string" href="../../CommonHelp/operatorSQL/deleteMany.ashx?TabName=T_Order" target="selectedTodo" rel="delId" class="delete"><span>批量删除</span></a></li>
+                <li class="line">line</li>
+                <li><a class="icon" href="../../CommonHelp/DataConver/DataTableToExcel.ashx?TabName=T_Order" target="dwzExport" target="navTab" title="是要导出这些记录吗?"><span>导出EXCEL</span></a></li>
+            </ul>
+        </div>
+        <div class="grid">
+            <div class="gridHeader">
+                <div class="gridThead">
+                    <table style="width:1129px;">
+                        <thead>
+                            <tr style=" text-align:center">
+                                <th style="width: 18px;"><div><input id="Totalselect" group="delId" onclick="CheckDelete()" type="checkbox"></div></th>
+                                <th style="width: 40px;"><div class="gridCol" title="序号">序号</div></th>
+                                <th style="width: 120px;"><div class="gridCol" title="订单号">订单号</div></th>
+                                <th style="width: 71px;"><div class="gridCol" title="定的桌数">定的桌数</div></th>
+                                <th style="width: 71px;"><div class="gridCol" title="用户">用户</div></th>
+                                <th style="width: 71px;"><div class="gridCol" title="订餐时间">订餐时间</div></th>
+                                <th style="width: 71px;"><div class="gridCol" title="备注">备注</div></th>
+                                <th style="width: 71px;"><div class="gridCol" title="总价钱">总价钱(元)</div></th>
+                                <th style="width: 71px;"><div class="gridCol" title="状态">状态</div></th>
+                                <th style="width:71px;"> <div class="gridCol" title="查看详情">查看详情</div> </th>
+
+                                <th class="center" style="width:20px"><div class="gridCol" title="删除">删除</div></th>
+                                <th class="center" style="width:20px"><div class="gridCol" title="处理">处理</div></th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
+            </div>
+            <div class="gridScroller" layouth="138" style="width: 1149px; height: 50px; overflow: auto;">
+                <div class="gridTbody">
+                   
+                    <table style="width:1129px;">
+                        <tbody>
+                          
+
+                            #foreach($item in $data.Dt)
+                            <tr onclick="Gotodetail($item.orderNum)" target="sid_user" rel="1">
+
+                                <td style="width: 18px;"><div><input name="delId" type="checkbox" value="$item.id"></div></td>
+                                <td class="center" style="width: 40px">$item.id</td>
+                                <td class="center" style="width: 120px;"><div>$item.orderNum</div></td>
+                                <td class="center" style="width: 71px;"><div>$item.deskNum</div></td>
+                                <td class="center" style="width: 71px;"><div>$item.userName</div></td>
+                                <td class="center" style="width: 71px;"><div>$item.orderTime</div></td>
+                                <td class="center" style="width: 71px;"><div>$item.mark</div></td>
+                                <td class="center" style="width: 71px;"><div>$item.totalPay</div></td>
+
+                                #if($item.statu =="已处理")
+                                <td class="center" style="width: 71px;"><div style="color:gray">$item.statu</div></td>
+                                #else
+                                <td class="center" style="width: 71px;"><div style="color:red">$item.statu</div></td>
+                                #end
+                                <td class="center" style="width:71px;"><div><a target="navTab" rel="showUsers" title="订单详情管理" href="../UI/OrderDetailManage.ashx?Search=test&orderNum=$item.orderNum">详情</a></div></td>
+                                <td class="center" style="width:20px">
+                                    <a title="删除" target="ajaxTodo" href="../UI/Edit/OrderEdit.ashx?Action=Delete&id=$item.id" class="btnDel">删除</a>
+                                </td>
+                                <td style="width:20px">
+                                    <a title="处理" target="ajaxTodo" href="../Other/PoceOrderMany.ashx?delId=$item.id" class="btnEdit">处理</a>
+                                </td>
+                            </tr>
+
+                            #end
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+            <div class="resizeMarker" style="height:300px; left:57px;display:none;"></div><div class="resizeProxy" style="height:300px; left:377px;display:none;"></div>
+        </div>
+        <div class="panelBar">
+            <div class="pages">
+                <span>显示</span>
+                <select class="combox" name="numPerPage" onchange="navTabPageBreak({ numPerPage: this.value })">
+                    #foreach($pg in $data.PageType)
+                    #if($pg.pageSizes == $data.pageSize)
+                    <option value="$pg.pageSizes" selected>$pg.pageSizes</option>
+                    #else
+                    <option value="$pg.pageSizes">$pg.pageSizes</option>
+                    #end
+                    #end
+                </select>
+
+                <span>条，共${data.Total}条</span>
+            </div>
+            <!--分页组件-->
+            <div class="pagination" targettype="navTab" totalcount="${data.Total}" numperpage="${data.pageSize}" pagenumshown="10" currentpage="${data.Index}"></div>
+        </div>
+
+    </div>
+</body>
+</html>
