@@ -1,0 +1,12 @@
+C:\Users\孔龙飞\Documents\Visual Studio 2013\Projects\兽兽\test\bin\test.dll.config
+C:\Users\孔龙飞\Documents\Visual Studio 2013\Projects\兽兽\test\bin\test.dll
+C:\Users\孔龙飞\Documents\Visual Studio 2013\Projects\兽兽\test\bin\test.pdb
+C:\Users\孔龙飞\Documents\Visual Studio 2013\Projects\兽兽\test\obj\Debug\test.dll
+C:\Users\孔龙飞\Documents\Visual Studio 2013\Projects\兽兽\test\obj\Debug\test.pdb
+C:\Users\孔龙飞\Documents\Visual Studio 2013\Projects\兽兽\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+M:\兽兽\test\bin\test.dll.config
+M:\兽兽\test\bin\test.dll
+M:\兽兽\test\bin\test.pdb
+M:\兽兽\test\obj\Debug\test.csprojResolveAssemblyReference.cache
+M:\兽兽\test\obj\Debug\test.dll
+M:\兽兽\test\obj\Debug\test.pdb
