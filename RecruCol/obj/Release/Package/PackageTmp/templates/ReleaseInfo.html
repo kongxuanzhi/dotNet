@@ -1,0 +1,61 @@
+﻿#parse("head.html")
+    <!--这是发布信息的地方，包括表单提交和后台验证，发布后还不能马上就加到主页上，还要得到工作人员的评价，审核再上传
+    ckedit
+文章标题，发布公司，文章内容包括岗位简介，岗位要求，薪资待遇等，并且没登陆的公司不能发表，会转到登录页面-->
+<hr />
+<script src="../Js/ckeditor/ckeditor.js"></script>
+<script src="../Js/releaseValid.js"></script>
+<form action="ReleaseValidate.ashx" method="post" enctype=multipart/form-data>
+    <div >
+        <p>
+            <strong>招聘或实习岗位：</strong><input id="pos" name="pos" type="text" onblur="CheckPos()" />&nbsp;<span id="posW" style="color:red">*</span>
+        </p>
+        <p>
+            <strong>
+                发布信息类别：
+            </strong>
+            <select id="arttype" name="arttype" onblur="CheckArttype()">
+                <option value="-1">--请选择--</option>
+                <option value="招聘">招聘</option>
+                <option value="实习">实习</option>
+                <option value="招聘会">招聘会</option>
+            </select>&nbsp;<span id="arttypeW" style="color:red">*</span>
+            <strong>性别：</strong>
+            <select id="gender" name="gender" onblur="CheckGender()">
+                <option value="-1">--请选择--</option>
+                <option value="男">男</option>
+                <option value="女">女</option>
+                <option value="不限">不限</option>
+            </select>&nbsp;<span id="genderW" style="color:red">*</span>
+       
+            <strong>学历要求:</strong>
+            <select id="EduRequir" name="EduRequir" onblur="CheckEduRequir()">
+                <option value="-1">--请选择--</option>
+                #foreach($edu in $data.eduType)
+                <option value="$edu.name">$edu.name</option>
+                #end
+            </select>&nbsp;<span id="EduRequirW" style="color:red">*</span>
+        </p><p>
+            <strong>人数要求:</strong>
+            <input id="ManCount" name="ManCount" type="text" onblur="CheckCount()" />&nbsp;<span id="ManCountW" style="color:red">*</span>
+        </p>
+        <p>
+            <strong>
+
+                详细信息：&nbsp;<span style="color:red">*必填*</span>
+            </strong><!--&nbsp;<span id="contextW" style="color:red">*</span>-->
+            <textarea id="context" name="Context"></textarea>
+        </p>
+        <script type="text/javascript">
+            var editor = CKEDITOR.replace('context');
+            //这里应该给ckeditor增加一个校验
+        </script>
+        <p style="text-align:center"> <input name="submit" onclick="return CheckAll()" type="submit" id="sub" value="保存" /></p>
+    </div>
+</form>
+
+
+
+
+
+#parse("foot.html")

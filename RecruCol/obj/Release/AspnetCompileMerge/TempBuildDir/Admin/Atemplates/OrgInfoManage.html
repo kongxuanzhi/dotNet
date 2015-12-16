@@ -1,0 +1,124 @@
+﻿#parse("head.html")
+<script src="../JS/conmonjs.js"></script>
+<script src="../../Js/ckeditor/ckeditor.js"></script>
+<body >
+    <div id="main" style="width:85%; margin:0 auto; text-align:center">
+        <div id="search">
+            <form class="form-inline" action="OrgInfoManage.ashx" method="post">
+                <div class="form-group">
+                    <label for="exampleInputName2">公司名称：</label>
+                    <input type="text" class="form-control" name="name" value="$!data.SeachPara.name" id="exampleInputName2">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail2">地址：</label>
+                    <input type="text" class="form-control" name="adress" value="$!data.SeachPara.adress" id="exampleInputEmail2">
+                </div>
+
+                <div class="form-group">
+                    <label for="check">推介：</label>
+                    <select id="check" class="form-control" name="isRecom">
+                        #if($data.SeachPara.isRecom == 0)
+                        <option value="1">推介</option>
+                        <option value="0" selected>待推介</option>
+                        #else
+                        <option value="1" selected>推介</option>
+                        <option value="0">待推介</option>
+                        #end
+                    </select>
+                </div>
+                <button type="submit" name="Search" value="search" class="btn btn-default">搜索</button>
+            </form>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <td colspan="6"><strong>公司管理</strong> </td>
+                        <td colspan="2"><a href="OrgEdit.ashx?Action=AddNew"><strong>新增公司</strong> </a> </td>
+                    </tr>
+                    <tr>
+                        <td>序号</td>
+                        <td>名称</td>
+                        <td>地址</td>
+                        <td>是否推介</td>
+                        <td>编辑</td>
+                        <td>删除</td>
+                        <td> <input type="button" class="btn btn-primary btn-sm" onclick="ajaxDelete('OrgInfoManage.ashx', 'deleteOrg.ashx')" value="批量删除"><input id="Totalselect" type="checkbox" onclick="    CheckDelete()"></td>
+                    </tr>
+                </thead>
+                <tbody>
+                    #foreach($org in $data.OrgInfo)
+                    <tr>
+                        <td>$org.id</td>
+                        #if($org.name.length() > 12)
+                            #set($name = "$org.name.SubString(0,12)")
+                            <td>$name...</td>
+                            #else
+                            <td>$org.name</td>
+                        #end
+
+                        #if($org.adress.length() > 12)
+                            #set($adress = "$org.naadressme.SubString(0,12)")
+                            <td>$adress...</td>
+                            #else
+                            <td>$org.adress</td>
+                        #end
+
+                        #if($org.isRecom == "True")
+                        <td>推介</td>
+                        #else
+                        <td>待推介</td>
+                        #end
+                        <td><a href="OrgEdit.ashx?Action=Edit&Id=$org.id">编辑</a></td>
+                        <td><a href="OrgEdit.ashx?Action=Delete&Id=$org.id">删除</a></td>
+                        <td><input id="child" name="delId" type="checkbox" value="$org.id" /></td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
+        <div id="paging">
+            <nav style="float:right; width:70%;">
+                <ul class="pagination table-hover" style="margin:0 auto;width:70%;">
+                    <!--<li><a href="artdentsManage.ashx?PageId=1">首页</a></li>-->
+                    <!--上一页-->
+                    #set($pre=$data.Index - 1)
+                    #if($pre > 0)
+                    <li>
+                        <a href="OrgInfoManage.ashx?index=$pre" aria-label="Previous">
+                            <span aria-hidden="false">&laquo;</span>
+                        </a>
+                    </li>
+                    #else
+                    <li class="disabled">
+                        <a aria-label="Previous">
+                            <span aria-hidden="false">&laquo;</span>
+                        </a>
+                    </li>
+                    #end
+
+                    #foreach($Page in $data.Pages)
+                    <li><a href="$Page.href">$Page.Id</a></li>
+                    #end
+                    <!--下一页-->
+                    #set($next=$data.Index + 1)
+                    #if($next <= $data.Totalnum)
+                    <li>
+                        <a href="OrgInfoManage.ashx?index=$next" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    #else
+                    <li class="disabled">
+                        <a aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</body>
+#parse("foot.html")

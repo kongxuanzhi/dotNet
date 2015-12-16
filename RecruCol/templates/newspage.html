@@ -1,0 +1,19 @@
+﻿#parse("head.html")
+<div>
+    <ol class="breadcrumb" style="margin-top:0px;">
+        <!--<li><a href="../UI/index.ashx">主页</a></li>-->
+        <li class="active"><a href="../UI/CareerGuid.ashx">职业指导</a></li>
+        <li class="active">文章</li>
+    </ol>
+   
+    <h2 style="text-align:center">$data.ArticleInfo.title</h2>
+    <p style="text-align:center;">
+        作者：$data.ArticleInfo.author&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        文章来源：$data.ArticleInfo.src&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        发布时间：$data.ArticleInfo.pubTime
+    </p>
+    <hr />
+    $data.ArticleInfo.article<hr />
+</div>
+
+#parse("foot.html")

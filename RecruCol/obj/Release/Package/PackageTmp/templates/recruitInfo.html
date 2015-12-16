@@ -1,0 +1,169 @@
+﻿#parse("head.html")
+<div class="">
+    <div>
+        <ol class="breadcrumb" style="margin-top:0px;">
+            <!--<li><a href="../UI/index.ashx">主页</a></li>-->
+            <li class="active">$data.Type信息</li>
+        </ol>
+    </div>
+    <div class="left_div col-sm-2">
+        <ul id="na" class="nav nav-pills nav-stacked">
+            <li role="presentation" class="" id="recruit">
+                <a href="recruitInfo.ashx?Action=RecruitInfo">招聘信息</a>
+            </li>
+            <li role="presentation" class="" id="trainee">
+                <a href="recruitInfo.ashx?Action=Trainee">实习信息 </a>
+            </li>
+            <li role="presentation" class="" id="jobFair">
+                <a href="recruitInfo.ashx?Action=Recruiting">招聘会 </a>
+            </li>
+        </ul>
+    </div>
+    #if($data.Type == "招聘")
+    <script type="text/javascript">
+        var liao = jQuery("#recruit");
+        liao.addClass("active");
+    </script>
+    #elseif($data.Type == "实习")
+    <script type="text/javascript">
+        var liao = jQuery("#trainee");
+        liao.addClass("active");
+    </script>
+    #else
+    <script type="text/javascript">
+        var liao = jQuery("#jobFair");
+        liao.addClass("active");
+    </script>
+    #end
+    <div class="right col-sm-10">
+        <div class="">
+            <blockquote style="height: 50px;">
+                <h3 style="margin-top: 0px;">$data.Type信息</h3>
+            </blockquote>
+            <hr />
+        </div>
+        <style>
+            form input {
+                width: 156px;
+            }
+        </style>
+        <script type="text/javascript">
+            function onlook() {
+                jQuery.ajax({
+                    type: "post",
+                    url: "recruitInfo.ashx",
+                    data: {
+                        posName: $("#posName").val(),
+                        orgName: $("#orgName").val(),
+                        workAddress: $("#workAddress").val()
+                    },
+                    success: (function (data) {
+
+                    })
+                });
+            }
+        </script>
+        <div class="search">
+            <form action="recruitInfo.ashx" class="form-inline" method="post">
+                <input type="hidden" name="Action" value="$data.Type" />
+                <input type="hidden" name="Save" value="$data.type" />
+                <div class="form-group ">
+                    <label for="posName">职位名称：</label>
+                    <input type="text" id="posName" name="posName" value="$data.PosName" />
+                </div>
+                <div class="form-group ">
+                    <label for="orgName">单位名称：</label>
+                    <input type="text" id="orgName" name="orgName" value="$data.OrgName">
+                </div>
+                <div class="form-group ">
+                    <label for="workAddress">工作地点：</label>
+                    <input type="text" id="workAddress" name="workAddress" value="$data.WorkAddress">
+                </div>
+                <button type="submit" class="btn btn-default">搜索</button>
+            </form>
+
+
+        </div>
+        <div id="InfoList">
+            <table class="table table-bordered table-hover " style="text-align:center">
+                <thead>
+                    <tr>
+                        <td><strong>$data.Type岗位</strong></td>
+                        <td><strong>$data.Type公司</strong></td>
+                        <td><strong>发布时间</strong></td>
+                    </tr>
+                </thead>
+                <script>
+                    function goto(id) {
+                        window.location.href = "recuritDetail.ashx?id=" + id;
+                    }
+                </script>
+                <tbody>
+                    #foreach($org in $data.RecuritInfo)
+                    <tr onclick="goto($org.id)">
+                        #if($org.title.length() > 12)
+                        #set($title = "$org.title.SubString(0,12)")
+                        <td>$title...</td>
+                        #else
+                        <td>$org.title</td>
+                        #end
+                        #if($org.name.length() > 12)
+                        #set($name = "$org.name.SubString(0,12)")
+                        <td>$name...</td>
+                        #else
+                        <td>$org.name</td>
+                        #end
+                        <td>$org.pubTime</td>
+                    </tr>
+                    #end
+                </tbody>
+            </table>
+        </div>
+
+        <div id="pageChange" style="float:right;margin-top:0px;">
+            <nav>
+                <ul class="pagination">
+                    #set($pre=$data.Index - 1 )
+                    #if($pre < 1)
+                        <li>
+                            <a aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        #else
+                        <li>
+                            <a href="recruitInfo.ashx?Action=$data.Type&index=$pre" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        #end
+
+                        #foreach($page in $data.Pages)
+                        #if($page.index==$data.Index)
+                        <li><a style="border: 0px;"><span style="color: black">$page.index</span></a></li>
+                        #else
+                        <li><a href="$page.href">$page.index</a></li>
+                        #end
+                        #end
+
+                        #set($next=$data.Index + 1 )
+                        #if($next>$data.Totalnum)
+                        <li>
+                            <a aria-label="Next" aria-disabled="true">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        #else
+                        <li>
+                            <a href="recruitInfo.ashx?Action=$data.Type&index=$next" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                        #end
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+#parse("foot.html")

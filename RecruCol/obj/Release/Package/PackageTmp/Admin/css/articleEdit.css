@@ -1,0 +1,43 @@
+﻿
+
+#left
+{
+    width:20px;
+    background-color:black;
+}
+#right
+{
+    border-collapse:collapse;
+    width:60%;
+    margin:0 auto;
+    display: block;
+}
+
+        #searchfield {
+            height: 40px;
+        }
+        form #time
+        {
+            height:28px;
+        }
+        form #search {
+            width:62px;
+            
+        }
+        form #isLegal {
+            height: 28px;
+        }
+        form #isDelete {
+            height: 28px;
+        }
+        form #type
+        {
+            height: 28px;
+        }
+        form #bigType {
+            height: 28px;
+        }
+        #table {
+             margin-top:23px;
+        } 
+             

@@ -1,0 +1,114 @@
+﻿#parse("head.html")
+<script src="../../Js/ckeditor/ckeditor.js"></script>
+<link href="../css/articleEdit.css" rel="stylesheet" />
+
+<div id="main" >
+    <div id="left">
+    </div>
+    <div id="right" style="background: url(../images/back.jpg);">
+        <span style="text-align:center; font-size:20px">$data.Action文章</span>
+        <form class="form-horizontal" action="ArticleEdit.ashx?Action=$data.Action" method="post">
+            <input type="hidden" name="id" value="$!data.artEdit.id" />
+
+            <div class="form-group">
+                <label for="caption" class="col-sm-2 control-label">文章标题：</label>
+                <div class="col-sm-10">
+                    <input class="form-control" id="caption" type="text" name="title" value="$!data.artEdit.title" />
+                </div>
+            </div>
+
+            <div class="form-group ">
+                <label for="time" class="col-sm-2 control-label">
+                    发布时间：
+                </label>
+                <div class="col-sm-10">
+                    <input class="form-control" type="date" name="pubTime" id="time" value="$!data.artEdit.pubTime" />
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="author" class="col-sm-2 control-label">
+                    作者：
+                </label>
+                <div class="col-sm-10">
+                    <input id="author" type="text" name="author" value="$!data.artEdit.author" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="src" class="col-sm-2 control-label">
+                    来源：
+                </label>
+                <div class="col-sm-10">
+                    <input id="src" type="text" name="src" value="$!data.artEdit.src" class="form-control" />
+                </div>
+            </div>
+            <div class="form-group  dropup">
+                <label for="bigType" class="col-sm-2 control-label">大类别：</label>
+                <div class="col-sm-10">
+                    <select id="bigType" name="bigType" class="form-control">
+                        #if($!data.artEdit.bigType=="hr分享")
+                        <option value="Guid">职业推介</option>
+                        <option value="Hr" selected>Hr分享</option>
+                        #else
+                        <option value="Guid" selected>职业推介</option>
+                        <option value="Hr">Hr分享</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="type" class="col-sm-2 control-label">
+                    类别：
+                </label>
+                <div class=" col-sm-10">
+                    <select id="type" name="type" class="form-control">
+                        #foreach($ty in $data.Alltype)
+                        #if($ty.name == $!data.artEdit.type)
+                        <option value="$ty.name" selected>$ty.name</option>
+                        #else
+                        <option value="$ty.name">$ty.name</option>
+                        #end
+                        #end
+                    </select>
+                </div>
+            </div>
+            <div style="height:5px"></div>
+           
+            <div class="form-group ">
+                <label for="isLegal" class="col-sm-2 control-label">
+                    合法否：
+                </label>
+                <div class="col-sm-10">
+                    <select id="isLegal" name="isLegal" class="form-control">
+                        #if($!data.artEdit.isLegal == "True")
+                        <option value="1" selected>合法</option>
+                        <option value="0">不合法</option>
+                        #else
+                        <option value="1">合法</option>
+                        <option value="0" selected>不合法</option>
+                        #end
+                    </select>
+                </div>
+            </div>
+            <div class="form-group ">
+                <label for="context" class="col-sm-2 control-label">
+                    内容：
+                </label><textarea id="context" name="article">$!data.artEdit.article</textarea>
+            </div>
+            <script type="text/javascript">
+                var editor = CKEDITOR.replace("context", { language: 'zh-cn',height: 300, });
+                //这里应该给ckeditor增加一个校验
+            </script>
+            <div class="form-group">
+                <div class="col-sm-offset-10">
+                    <input type="submit" name="Save" value="提交" class="btn btn-default" />
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+
+</div>
+
+#parse("foot.html")

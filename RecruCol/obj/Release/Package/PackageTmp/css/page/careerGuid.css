@@ -1,0 +1,61 @@
+﻿body {
+}
+        .riboxm {
+            width: 350px;
+            
+        }
+        .ribox {
+            float: left;
+            width: 370px;
+            margin-right: 8px;
+            margin-bottom: 10px;
+        }
+
+        div {
+            display: block;
+        }
+
+        .riboxm h1 {
+            background-position: 0 -137px;
+        }
+
+        .riboxtitle {
+            background: url(../../../images/title_bg.gif);
+            height: 29px;
+            line-height: 24px;
+            text-indent: 18px;
+            font-weight: bold;
+            color: #eb0000;
+        }
+
+        li {
+            display: list-item;
+            text-align: -webkit-match-parent;
+        }
+
+        .tblist {
+            margin-top: -5px;
+            padding-left: 15px;
+        }
+
+        .clearfix:after {
+            visibility: hidden;
+            display: block;
+            font-size: 0;
+            content: " ";
+            clear: both;
+            height: 0;
+        }
+
+        .ribox .more {
+            float: right;
+            color: #000;
+            font-weight: normal;
+            margin-right: 15px;
+        }
+        .rimain {
+            border: solid 1px #e8e8e8;
+            border-top: none;
+            padding-top: 6px;
+            height: 200px;
+        }

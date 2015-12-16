@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>深圳市宝安区高新技术企业招聘专栏后台登录</title>
+    <!-- Bootstrap -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="//cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style>
+        body {
+            background: url(../images/login.jpg) no-repeat;
+            background-size: 100% 790px;
+        }
+    </style>
+</head>
+<body>
+    <div id="loginFrom">
+        <form class="form-horizontal" action="../UI/AdminLogin.ashx" method="post">
+            <div id="main" style="padding-top:200px; margin:0 auto; width:348px">
+                <h1>管理员登录</h1>
+                <hr />
+                <div class="form-group">
+                    <span id="messg"></span>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-3 control-label" for="usrName">用户名：</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="usr" id="usrname" type="text" placeholder="用户名" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="Password1" class="col-sm-3 control-label">密码：</label>
+                    <div class="col-sm-9">
+                        <input class="form-control" name="passWord" id="password" type="password" placeholder="密码" />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-12">
+                        <input class="btn btn-default" id="submit" type="submit" value="登录" />
+                        &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;
+                        <input class="btn btn-default" id="Reset1" type="reset" value="重置" />
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+    <script src="../../Js/bootstrap.min.js"></script>
+</body>
+</html>

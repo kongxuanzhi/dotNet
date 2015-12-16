@@ -1,0 +1,122 @@
+﻿#parse("head.html")
+<link href="../css/page/careerGuid.css" rel="stylesheet" />
+<div>
+    <ol class="breadcrumb" style="margin-top:0px;">
+        <!--<li><a href="../UI/index.ashx">主页</a></li>-->
+        <li class="active">HR分享</li>
+    </ol>
+</div>
+<div class="col-sm-12">
+    <div id="left" class="col-sm-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"> <a href="HrpageList.ashx?Arttype=PersonManage">人力管理</a></li>
+            <li role="presentation" class="active"><a href="HrpageList.ashx?Arttype=Review">招聘面试</a> </li>
+            <li role="presentation" class="active"><a href="HrpageList.ashx?Arttype=Managestir">管理激励</a> </li>
+            <li role="presentation" class="active"><a href="HrpageList.ashx?Arttype=TaskCheck">业绩考核</a> </li>
+            <li role="presentation" class="active"><a href="HrpageList.ashx?Arttype=MoneyExt">薪酬福利</a> </li>
+            <li role="presentation" class="active"><a href="HrpageList.ashx?Arttype=NormalLaw">法律常识</a> </li>
+        </ul>
+             </div>
+    <div id="right" class="col-sm-10">
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="HrpageList.ashx?Arttype=PersonManage" class="more">更多&gt;&gt;</a>人力管理
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.PersonManage)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+        
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="HrpageList.ashx?Arttype=Review" class="more">更多&gt;&gt;</a>招聘面试
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.Review)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="HrpageList.ashx?Arttype=Managestir" class="more">更多&gt;&gt;</a>管理激励
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.Managestir)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="HrpageList.ashx?Arttype=TaskCheck" class="more">更多&gt;&gt;</a> 业绩考核
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.TaskCheck)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="HrpageList.ashx?Arttype=MoneyExt" class="more">更多&gt;&gt;</a>薪酬福利
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.MoneyExt)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="HrpageList.ashx?Arttype=NormalLaw" class="more">更多&gt;&gt;</a>法律常识
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.NormalLaw)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+#parse("foot.html")

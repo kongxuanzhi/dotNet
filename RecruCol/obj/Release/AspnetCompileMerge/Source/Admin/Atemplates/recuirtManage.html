@@ -1,0 +1,155 @@
+﻿#parse("head.html")
+<div style="width:85%; margin:0 auto">
+    <link href="../css/recuirt.css" rel="stylesheet" />
+    <script src="../JS/conmonjs.js"></script>
+    <div id="searchfield">
+        <form action="recuirtManage.ashx" method="post">
+            岗位：<input id="title" type="text" name="title" value="$!data.SeachPara.title" />
+            发布时间：<input type="date" name="pubTime" id="time" value="$!data.SeachPara.pubTime" />
+            公司：<input id="orgId" type="text" name="author" value="$!data.SeachPara.orgId" />
+            学历要求：
+            <select id="jobRequir" name="jobRequir">
+                <option value="" selected>--请选择--</option>
+                #foreach($et in $data.EduType)
+                    #if($et.Name == $data.SeachPara.jobRequir)
+                         <option value="$et.Name" selected>$et.Name</option>
+                    #else
+                         <option value="$et.Name">$et.Name</option>
+                    #end
+                #end
+            </select>
+            类别：
+            <select id="type" name="type">
+                #if($data.SeachPara.type=="招聘")
+                <option value="">--请选择--</option>
+                <option value="招聘" selected>招聘</option>
+                <option value="实习">实习</option>
+                <option value="招聘会">招聘会</option>
+                #elseif($data.SeachPara.type == "实习")
+                <option value="">--请选择--</option>
+                <option value="招聘">招聘</option>
+                <option value="实习" selected>实习</option>
+                <option value="招聘会">招聘会</option>
+                #elseif($data.SeachPara.type == "招聘会")
+                <option value="">--请选择--</option>
+                <option value="招聘">招聘</option>
+                <option value="实习">实习</option>
+                <option value="招聘会" selected>招聘会</option>
+                #else
+                <option value="" selected>--请选择--</option>
+                <option value="招聘">招聘</option>
+                <option value="实习">实习</option>
+                <option value="招聘会" >招聘会</option>
+                #end
+            </select>
+            合法否：
+            <select id="isLegal" name="isLegal">
+                #if($data.SeachPara.isLegal == "0")
+                <option value="1">合法</option>
+                <option value="0" selected>不合法</option>
+                #else
+                <option value="1" selected>合法</option>
+                <option value="0">不合法</option>
+                #end
+            </select>
+            <input id="search" name="Search" type="submit" value="搜索" />
+        </form>
+    </div>
+    <div id="table">
+        <table class="table table-hover table-bordered " style="text-align:center">
+            <tr>
+                <td colspan="9"><strong>招聘和实习信息管理</strong></td>
+               <td colspan="4"></td>
+            </tr>
+            <tr>
+                <td>序号</td>
+                <td>招聘标题</td>
+                <td>公司</td>
+                <td>发布时间</td>
+                <td>岗位要求</td>
+                <td>招聘/实习/其他</td>
+                <td>性别要求</td>
+                <td>招聘人数</td>
+                <td>合法</td>
+                <td>编辑</td>
+                <td>删除</td>
+                <td><input type="button" class="btn btn-primary btn-sm" onclick="ajaxDelete('recuirtManage.ashx', 'deleterecuirt.ashx')" value="批量删除"><input id="Totalselect" type="checkbox" onclick="CheckDelete()"></td>
+            </tr>
+            #foreach($rec in $data.RecuitInfo)
+            <tr>
+                <td>$rec.id</td>
+                #if($rec.title.length() > 12)
+                #set($title = "$rec.title.SubString(0,12)") 
+                <td>$title...</td>
+                #else
+                <td>$rec.title</td>
+                #end
+
+                #if($rec.orgId.length() > 12)
+                #set($orgId = "$rec.orgId.SubString(0,12)")
+                <td>$orgId...</td>
+                #else
+                <td>$rec.orgId</td>
+                #end
+                <td>$rec.pubTime</td>
+
+                <td>$rec.jobRequir</td>
+                <td>$rec.type</td>
+                <td>$rec.gender</td>
+                 <td>$rec.Peoplenum</td>
+                #if($rec.isLegal == "True")
+                <td>合法</td>
+                #else
+                <td><span style="color:red">不合法</span></td>
+                #end
+                <td><a href="recuirtEdit.ashx?Action=Edit&Id=$rec.id">编辑</a></td>
+                <td><a href="recuirtEdit.ashx?Action=Delete&Id=$rec.id">删除</a></td>
+                <td><input id="child" name="delId" type="checkbox" value="$rec.id" /></td>
+            </tr>
+            #end
+        </table>
+    </div>
+    <div>
+        <nav style="float:right; width:70%;">
+            <ul class="pagination table-hover" style="margin:0 auto;width:70%;">
+                <!--<li><a href="artdentsManage.ashx?PageId=1">首页</a></li>-->
+                <!--上一页-->
+                #set($pre=$data.Index - 1)
+                #if($pre > 0)
+                <li>
+                    <a href="recuirtManage.ashx?index=$pre" aria-label="Previous">
+                        <span aria-hidden="false">&laquo;</span>
+                    </a>
+                </li>
+                #else
+                <li class="disabled">
+                    <a aria-label="Previous">
+                        <span aria-hidden="false">&laquo;</span>
+                    </a>
+                </li>
+                #end
+
+                #foreach($Page in $data.Pages)
+                <li><a href="$Page.href">$Page.Id</a></li>
+                #end
+                <!--下一页-->
+                #set($next=$data.Index + 1)
+                #if($next <= $data.Totalnum)
+                <li>
+                    <a href="recuirtManage.ashx?index=$next" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                #else
+                <li class="disabled">
+                    <a aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+                #end
+            </ul>
+        </nav>
+
+    </div>
+    </div>
+ #parse("foot.html")

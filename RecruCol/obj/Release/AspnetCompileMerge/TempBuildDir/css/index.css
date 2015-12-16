@@ -1,0 +1,41 @@
+﻿div
+{
+    display:block;
+}
+body {
+    
+    width: 982px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: White;
+}
+#topPic {
+    width:981px;
+    height:117px;
+    background:url(../images/topnew.jpg) no-repeat;
+}   
+#nav
+{
+    /*background:url(../../images/menulink.jpg) repeat-x;
+    width: 100%;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    z-index: 100zhai0;
+    height:36px;*/        
+}
+
+.navbar {
+    min-height: 12px;
+    left: -2px;
+    margin-bottom:0;
+}
+.navbar ul li
+{
+    width:19%;
+}
+
+.navbar-default {
+  background-color: #F8F8FC;
+  border-color: #e7e7e7;
+}

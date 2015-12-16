@@ -1,0 +1,169 @@
+﻿#parse("head.html");
+<body>
+
+    <link href="../css/articleEdit.css" rel="stylesheet" />
+    <script src="../JS/conmonjs.js"></script>
+    <div style="width:85%; margin:0 auto">
+
+        <div id="searchfield">
+            <form action="CheckArt.ashx" method="post">
+                
+                文章标题：<input id="title" type="text" name="title" value="$!data.SeachPara.title" />
+                发布时间：<input type="date" name="pubTime" id="time" value="$!data.SeachPara.pubTime" />
+                作者：<input id="author" type="text" name="author" value="$!data.SeachPara.author" />
+                来源：<input type="text" name="src" value="$!data.SeachPara.src" />
+                类别：
+                <select name="type" id="type">
+                    #if($null.isNull($data.SeachPara.type))
+                        <option value="">--请选择--</option>
+                        #foreach($ty in $data.AllType)
+                        <option value="$ty.name">$ty.name</option>
+                        #end
+                    #else
+                        <option value="">--请选择--</option>
+                        #foreach($ty in $data.AllType)
+                            #if($ty.name == $data.SeachPara.type)
+                            <option value="$ty.name" selected>$ty.name</option>
+                            #else
+                            <option value="$ty.name">$ty.name</option>
+                            #end
+                        #end
+                    #end
+                </select>
+
+                <div style="height:5px"></div>
+
+                大类别：
+                <select id="bigType" name="bigType">
+                    #if($data.SeachPara.bigType=="Guid")
+                    <option value="">--请选择--</option>
+                    <option value="Guid" selected>职业推介</option>
+                    <option value="Hr">Hr分享</option>
+                    #elseif($!data.SeachPara == "Hr")
+                    <option value="">--请选择--</option>
+                    <option value="Guid">职业推介</option>
+                    <option value="Hr" selected>Hr分享</option>
+                    #else
+                    <option value="" selected>--请选择--</option>
+                    <option value="Guid">职业推介</option>
+                    <option value="Hr">Hr分享</option>
+                    #end
+                </select>
+                合法否：
+                <select id="isLegal" name="isLegal">
+                    #if($data.SeachPara.isLegal=="1")
+                    <option value="">--请选择--</option>
+                    <option value="1" selected>合法</option>
+                    <option value="0">不合法</option>
+                    #elseif($data.SeachPara.isLegal=="0")
+                    <option value="">--请选择--</option>
+                    <option value="1">合法</option>
+                    <option value="0" selected>不合法</option>
+                    #else
+                    <option value="">--请选择--</option>
+                    <option value="1">合法</option>
+                    <option value="0">不合法</option>
+                    #end
+                </select>
+
+                <input id="search" name="Search" type="submit" value="搜索" />
+            </form>
+        </div>
+        <div id="table">
+            <table class="table table-hover table-bordered " style="text-align:center">
+                <tr>
+                    <td colspan="9"><strong>职业指导和Hr分享文章管理</strong></td>
+                    <td colspan="4"><a href="ArticleEdit.ashx?Action=AddNew">添加文章</a></td>
+                </tr>
+                <tr>
+                    <td>序号</td>
+                    <td>招聘标题</td>
+                    <td>发布时间</td>
+                    <td>作者</td>
+                    <td>来源</td>
+                    <td>文章内容</td>
+                    <td>类别</td>
+                    <td>是否合法</td>
+                    <td>职业指导或者Hr分享</td>
+                    <td>编辑</td>
+                    <td>删除</td>
+                    <td> <input type="button" class="btn btn-primary btn-sm" onclick="ajaxDelete('CheckArt.ashx', 'deleteAllArticle.ashx')" value="批量删除"><input id="Totalselect" type="checkbox" onclick="    CheckDelete()"></td>
+                </tr>
+                <script>
+                    function f(Id) {
+                        window.location = "artManage.ashx?Id=" + Id;
+                    }
+                </script>
+                #foreach($art in $data.Articles)
+                <tr>
+                    <!--onclick="f($art.id)"-->
+                    <td>$art.id</td>
+                    <td>$art.title</td>
+                    <td>$art.pubTime</td>
+                    <td>$art.author</td>
+
+                    <td>$art.src</td>
+                    #if($art.article.length() > 10)
+                    #set($article = $art.title)
+                    #end
+                    <td>$article...</td>
+                    <td>$art.type</td>
+                    #if($art.isLegal =="True")
+                    <td>合法</td>
+                    #else
+                    <td><span style="color:red">不合法</span></td>
+                    #end
+                    <td>$art.bigType</td>
+                    <td><a href="ArticleEdit.ashx?Action=Edit&Id=$art.id">编辑</a></td>
+                    <td><a href="ArticleEdit.ashx?Action=Delete&Id=$art.id">删除</a></td>
+                    <td><input id="child" name="delId" type="checkbox" value="$art.id" /></td>
+                </tr>
+                #end
+            </table>
+        </div>
+        <div>
+            <nav style="float:right; width:70%;">
+                <ul class="pagination table-hover" style="margin:0 auto;width:70%;">
+                    <!--<li><a href="artdentsManage.ashx?PageId=1">首页</a></li>-->
+                    <!--上一页-->
+                    #set($pre=$data.Index - 1)
+                    #if($pre > 0)
+                    <li>
+                        <a href="checkart.ashx?index=$pre" aria-label="Previous">
+                            <span aria-hidden="false">&laquo;</span>
+                        </a>
+                    </li>
+                    #else
+                    <li class="disabled">
+                        <a aria-label="Previous">
+                            <span aria-hidden="false">&laquo;</span>
+                        </a>
+                    </li>
+                    #end
+
+                    #foreach($Page in $data.Pages)
+                    <li><a href="$Page.href">$Page.Id</a></li>
+                    #end
+                    <!--下一页-->
+                    #set($next=$data.Index + 1)
+                    #if($next <= $data.Totalnum)
+                    <li>
+                        <a href="CheckArt.ashx?index=$next" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    #else
+                    <li class="disabled">
+                        <a aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+
+</body>
+#parse("foot.html");

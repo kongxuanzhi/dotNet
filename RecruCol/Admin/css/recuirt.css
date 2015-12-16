@@ -1,0 +1,23 @@
+﻿#searchfield {
+   
+            height: 40px;
+        }
+        form #time
+        {
+            height:28px;
+        }
+        form #search {
+            
+            width:62px;
+            
+        }
+        form #isLegal {
+            height: 28px;
+        }
+        #table {
+             margin-top:1px;
+        } 
+        #title
+        {
+            width:126px;
+        }       

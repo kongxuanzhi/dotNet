@@ -1,0 +1,70 @@
+﻿#parse("head.html")
+<link href="../css/recommend.css" rel="stylesheet" />
+    <div>
+        <ol class="breadcrumb" style="margin-top:0px;">
+            <!--<li><a href="../UI/index.ashx">主页</a></li>-->
+            <li class="active">宝安推介</li>
+        </ol>
+    </div>
+<div id="main">
+    <table style="text-align:center;" class="table table-striped table-bordered table-hover">
+        <thead>
+            <tr>
+                <td class="col-sm-1"></td>
+                <td class="col-sm-3"><p class="head">公司</p></td>
+                <td class="col-sm-3"><p class="head">公司地址</p></td>
+                <td class="col-sm-3"><p class="head">宝安推荐</p></td>
+            </tr>
+        </thead>
+        #foreach($item in $data.BRecuritInfo)
+        <tr>
+            <td class="col-sm-1"></td>
+            <td class="col-sm-3">
+                #if($item.name.length() > 10)
+                #set($orgName = "$item.name.SubString(0,10)")
+                <span class="item1">
+                    <a href="baDetail.ashx?id=$item.id" target="_blank">
+                        $orgName...
+                    </a>
+                </span>
+                #else
+                <span class="item1">
+                    <a href="baDetail.ashx?id=$item.id" target="_blank">
+                        $item.name
+                    </a>
+                </span>
+                #end
+            </td>
+            <td>
+                #if($item.adress.length() > 10)
+                #set($orgAdress = "$item.adress.SubString(0,10)")
+                <span class="item6"> $orgAdress...</span>
+                #else
+                <span class="item6"> $item.adress</span>
+                #end
+            </td>
+            <td><span><img src="../images/recom.jpg" height="40" width="40" /></span></td>
+        </tr>
+        #end
+    </table>
+        </div>
+        <div class="page">
+            #set($pre = $data.Index - 1 )
+            #if($pre >= 1)
+            <a href="RecommendPos.ashx?index=$pre"><img src="/images/pre_icon.gif"></a>
+            #end
+
+            #foreach($page in $data.Pages)
+                #if($page.index == $data.Index)
+                    <span style="font-style:oblique">$page.Id</span>
+                #else
+                    <a href="$page.href">$page.Id</a>
+                #end
+            #end
+
+            #set($next = $data.Index + 1)
+            #if($next <= $data.TotalCount)
+               <a href="RecommendPos.ashx?index=$next"> <img src="/images/next_icon.gif"></a>
+            #end
+        </div>
+#parse("foot.html")

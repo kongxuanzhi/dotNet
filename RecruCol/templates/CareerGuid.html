@@ -1,0 +1,124 @@
+﻿#parse("head.html")
+<link href="../css/page/careerGuid.css" rel="stylesheet" />
+<div>
+    <ol class="breadcrumb" style="margin-top:0px;">
+        <!--<li><a href="../UI/index.ashx">主页</a></li>-->
+        <li class="active">职业指导</li>
+    </ol>
+</div>
+<div class="col-sm-12">
+   
+    <div id="left" class="col-sm-2">
+        <ul class="nav nav-pills nav-stacked">
+            <li role="presentation" class="active"><a href="newspageList.ashx?Arttype=Report">专题报道</a></li>
+            <li role="presentation" class="active"><a href="newspageList.ashx?Arttype=HotInfo">热门信息</a></li>
+            <li role="presentation" class="active"><a href="newspageList.ashx?Arttype=ResumeGuid">简历指导</a></li>
+            <li role="presentation" class="active"><a href="newspageList.ashx?Arttype=FaceTest">面试技巧</a></li>
+            <li role="presentation" class="active"><a href="newspageList.ashx?Arttype=LookJob">求职实录</a></li>
+            <li role="presentation" class="active"><a href="newspageList.ashx?Arttype=LoofForward">职场眺望</a></li>
+        </ul>
+    </div>
+    <div id="right" class="col-sm-10">
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="newspageList.ashx?Arttype=Report" class="more">更多&gt;&gt;</a>专题报道
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.Report)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="newspageList.ashx?Arttype=HotInfo" class="more">更多&gt;&gt;</a>热门信息
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.HotInfo)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="newspageList.ashx?Arttype=ResumeGuid" class="more">更多&gt;&gt;</a>简历指导
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.ResumeGuid)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="newspageList.ashx?Arttype=FaceTest" class="more">更多&gt;&gt;</a> 面试技巧
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.FaceTest)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="newspageList.ashx?Arttype=LookJob" class="more">更多&gt;&gt;</a>求职实录
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.LookJob)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+
+        <div class="ribox riboxm">
+            <h5 class="riboxtitle">
+                <a href="newspageList.ashx?Arttype=LoofForward" class="more">更多&gt;&gt;</a>职场眺望
+            </h5>
+            <div class="rimain clearfix">
+                <ul class="tblist">
+                    #foreach($item in $data.LoofForward)
+                    <li>
+                        <a href="$item.href" target="_self">
+                            $item.title
+                        </a>
+                    </li>
+                    #end
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+#parse("foot.html")

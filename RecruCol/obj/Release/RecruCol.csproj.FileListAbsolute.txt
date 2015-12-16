@@ -1,0 +1,7 @@
+F:\program\程序\网站\已完成\SZBA\RecruCol\bin\RecruCol.dll.config
+F:\program\程序\网站\已完成\SZBA\RecruCol\bin\RecruCol.dll
+F:\program\程序\网站\已完成\SZBA\RecruCol\bin\RecruCol.pdb
+F:\program\程序\网站\已完成\SZBA\RecruCol\bin\NVelocity.dll
+F:\program\程序\网站\已完成\SZBA\RecruCol\obj\Release\RecruCol.dll
+F:\program\程序\网站\已完成\SZBA\RecruCol\obj\Release\RecruCol.pdb
+F:\program\程序\网站\已完成\SZBA\RecruCol\obj\Release\RecruCol.csprojResolveAssemblyReference.cache

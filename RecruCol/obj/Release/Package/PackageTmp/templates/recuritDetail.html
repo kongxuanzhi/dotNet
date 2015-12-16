@@ -1,0 +1,45 @@
+﻿#parse("head.html")
+<div id="main">
+    <div>
+        <ol class="breadcrumb" style="margin-top:0px;">
+            <!--<li><a href="../UI/index.ashx">主页</a></li>-->
+            #if($data.OrgInfo.type=="招聘")
+            #set($type="RecruitInfo")
+            #else
+            #set($type="Trainee")
+            #end
+            <li><a href="../UI/recruitInfo.ashx?Action=$type">$data.OrgInfo.type信息</a></li>
+            <li class="active">$data.OrgInfo.title</li>
+        </ol>
+    </div>
+    <div id="title" style="font-size:x-large">
+        <strong>【$data.OrgInfo.type】$data.OrgInfo.title</strong>
+    </div>
+    <div style="float:right;margin-right:80px">发布时间：$data.OrgInfo.pubTime</div>
+    <hr />
+    <div style="margin-left:40px">
+        <div style="font-size:medium">
+          <label class="col">基本要求：</label> 
+            性别要求：$data.OrgInfo.gender&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+            招聘人数：$data.OrgInfo.Peoplenum&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;&nbsp; &nbsp; &nbsp; &nbsp;
+            学历要求：$data.OrgInfo.jobRequir
+        </div>
+        <br />
+        <div style="font-size:medium">
+            <strong>$data.OrgInfo.type岗位详情：</strong>
+        </div>
+        <div><p>$data.OrgInfo.posDetail</p></div>
+        <div style="font-size:medium">
+            <strong>公司基本信息：</strong>
+        </div>
+        <div>
+            <p>
+               #* <!--企业名称：##$data.OrgInfo.orgName
+                企业地址：##$data.OrgInfo.orgAdress-->*#
+                $data.OrgInfo.BreifInfo
+            </p>
+        </div>
+    </div>
+    <hr />
+</div>
+#parse("foot.html")

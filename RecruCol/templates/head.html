@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>$data.Maintitle</title>
+   
+    <link href="../css/org/job_fair_apply.css" rel="stylesheet" />
+    <link href="../css/bootstrap.min.css" rel="stylesheet" />
+     <script src="http://cdn.bootcss.com/jquery/1.11.2/jquery.min.js"></script>
+    <script src="../Js/bootstrap.min.js"></script>
+    <link href="../css/index.css" rel="stylesheet" />
+    <script src="../Js/jquery-1.8.0.min.js"></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            jQuery.ajax({
+                type: "post",
+                dataType: "html",
+                url: "Getorg.ashx",
+                async: true,
+                success: function (msg) {
+                    document.getElementById("login").innerHTML = msg;
+                    if (msg != "企业登录")
+                    {
+                        jQuery("#operat").prepend('<a id="logout" href="Getorg.ashx?logout=1" class="btn btn-info  navbar-right">退出登录</a>');
+                    }
+                }
+            });
+           
+        });
+    </script>
+    <title>江西理工大学就业信息网-招聘信息界面</title>
+    <style>
+        .navbar-right {
+            float: right !important;
+            margin-right: 0px;
+        }
+        .navbar-text {
+            margin-top: 2px;
+            margin-bottom: 13px;
+        }
+        .nav-pills > li + li {
+            margin-left: 12px;
+        }
+    </style>
+</head>
+<body style="margin: auto; border: 1px solid #ddd; ">
+    <div id="head" style="width:982px">
+        <div id="regist" class="nav-pills">
+            <nav class=" navbar navbar-default" style="border-radius:0px;">
+                <h4 class="navbar-text ">
+                    <a href="../UI/recruitInfo.ashx">深圳市宝安区高新技术企业招聘专栏</a>
+                </h4>
+                <div id="operat">
+                    <a href="ReleaseInfo.ashx" class="btn btn-info navbar-right">发布信息</a>
+                    <a id="login" href="etplogin.ashx" class="btn btn-info navbar-right"></a>
+                </div>
+            </nav>
+        </div>
+        <a href="../UI/recruitInfo.ashx">
+            <div id="topPic">
+            </div>
+        </a>
+        <div id="nav">
+            <nav class="navbar navbar-default">
+                <ul class="nav nav-pills">
+                    <li role="presentation"><a href="recruitInfo.ashx?Action=RecruitInfo">招聘信息</a></li>
+                    <li role="presentation"><a href="recruitInfo.ashx?Action=Trainee">实习岗位</a></li>
+                    <li role="presentation"><a href="CareerGuid.ashx">职业指导</a></li>
+                    <li role="presentation"><a href="RecommendPos.ashx">宝安推介</a></li>
+                    <li role="presentation"><a href="HrRecomend.ashx">HR分享</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
